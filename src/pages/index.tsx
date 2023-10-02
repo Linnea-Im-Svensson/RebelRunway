@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="h-40 w-full border-2 border-white text-white">Test</h1>
+      <h1 className="h-40 w-full border-2 border-black">Test</h1>
     </>
   );
 }
