@@ -138,7 +138,7 @@ const Navbar = () => {
         </div>
         {/* hidden middle row searchbar */}
         <div
-          className={`block h-14 w-full border-b-2 border-slate-200 bg-white px-2 transition-all md:hidden ${
+          className={`block h-14 w-full border-b-2 border-slate-200 bg-white px-2 transition-all dark:bg-black md:hidden ${
             scrollPosition.y > scrollPosition.lastY &&
             !showChildLinks &&
             " -translate-y-[97%]"
