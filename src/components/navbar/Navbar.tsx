@@ -138,7 +138,7 @@ const Navbar = () => {
         </div>
         {/* hidden middle row searchbar */}
         <div
-          className={`block h-14 w-full border-b-2 border-slate-200 bg-white px-2 transition-all dark:bg-black md:hidden ${
+          className={`block h-14 w-full border-b-2 border-slate-200 bg-white px-2 transition-all dark:border-slate-800 dark:bg-black md:hidden ${
             scrollPosition.y > scrollPosition.lastY &&
             !showChildLinks &&
             " -translate-y-[97%]"
@@ -152,7 +152,7 @@ const Navbar = () => {
             scrollPosition.y > scrollPosition.lastY &&
             !showChildLinks &&
             " -translate-y-[97%]"
-          } hidden w-full items-center justify-start gap-6 border-b-2 border-b-slate-200 bg-white transition-all dark:bg-black dark:text-slate-100 md:flex `}
+          } hidden w-full items-center justify-start gap-6 border-b-2 border-b-slate-200 bg-white transition-all dark:border-b-slate-800 dark:bg-black dark:text-slate-100 md:flex `}
         >
           {navCategories.map((category) => (
             <CategoryLink key={category.title} {...category} />

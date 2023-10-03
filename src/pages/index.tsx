@@ -1,16 +1,46 @@
 import { signIn, signOut, useSession } from "next-auth/react";
-import Head from "next/head";
-import Link from "next/link";
-
 import { api } from "~/utils/api";
+import ProductCard from "./components/ProductCard";
+import hoodies from "../../public/hoodie.jpg";
+import ProductContainer from "./components/ProductContainer";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>
-      <h1 className="h-screen w-full ">Test</h1>
-      <h1 className="h-screen w-full ">Test</h1>
+      <ProductContainer title="New Arrivals">
+        <ProductCard
+          productName="Hoodies"
+          img={hoodies}
+          cta="Explore Now!"
+          url="/"
+        />
+        <ProductCard
+          productName="Hoodies"
+          img={hoodies}
+          cta="Explore Now!"
+          url="/"
+        />
+        <ProductCard
+          productName="Hoodies"
+          img={hoodies}
+          cta="Explore Now!"
+          url="/"
+        />
+        <ProductCard
+          productName="Hoodies"
+          img={hoodies}
+          cta="Explore Now!"
+          url="/"
+        />
+        <ProductCard
+          productName="Hoodies"
+          img={hoodies}
+          cta="Explore Now!"
+          url="/"
+        />
+      </ProductContainer>
     </>
   );
 }
