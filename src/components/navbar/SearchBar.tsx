@@ -5,7 +5,7 @@ const SearchBar = () => {
     <div className="relative h-10 w-full">
       <input
         type="text"
-        className="h-full w-full rounded-lg bg-slate-200 p-2"
+        className="h-full w-full rounded-lg bg-slate-200 p-2 dark:bg-slate-600"
       />
       <BsSearch
         size={25}

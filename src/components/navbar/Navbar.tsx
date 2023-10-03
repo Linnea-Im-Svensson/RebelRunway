@@ -101,7 +101,7 @@ const Navbar = () => {
         {/* first row container*/}
         <div
           onMouseEnter={() => setShowChildLinks(false)}
-          className="z-20 flex h-14 w-full items-center justify-between bg-white px-6 py-2 md:px-10"
+          className="z-20 flex h-14 w-full items-center justify-between bg-white px-6 py-2 dark:bg-black dark:text-slate-100 md:px-10"
         >
           {/* left group container hamburgermenu/logo/searchbar */}
           <div className="flex items-center justify-center gap-4">
@@ -152,7 +152,7 @@ const Navbar = () => {
             scrollPosition.y > scrollPosition.lastY &&
             !showChildLinks &&
             " -translate-y-[97%]"
-          } hidden w-full items-center justify-start gap-6 border-b-2 border-b-slate-200 bg-white transition-all md:flex `}
+          } hidden w-full items-center justify-start gap-6 border-b-2 border-b-slate-200 bg-white transition-all dark:bg-black dark:text-slate-100 md:flex `}
         >
           {navCategories.map((category) => (
             <CategoryLink key={category.title} {...category} />
@@ -161,7 +161,7 @@ const Navbar = () => {
         {/* drop down category nav */}
         {showChildLinks && (
           <div
-            className="fixed top-28 flex h-fit w-full -translate-y-1 gap-6 border-y-2 border-slate-200 bg-white px-10"
+            className="fixed top-28 flex h-fit w-full -translate-y-1 gap-6 border-y-2 border-slate-200 bg-white px-10 dark:border-slate-800 dark:bg-black dark:text-slate-100"
             onMouseEnter={() => setShowChildLinks(true)}
             onMouseLeave={() => setShowChildLinks(false)}
           >
