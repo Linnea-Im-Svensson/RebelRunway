@@ -59,6 +59,12 @@ const SidebarNavModal = ({
         >
           X
         </button>
+        {/* Right side modal */}
+        {position === "right" && (
+          <p className="mt-2 text-center text-xl">Cart</p>
+        )}
+
+        {/* Left side modal */}
         <div>
           <div className="flex justify-center p-2">
             {position === "left" && <Logo />}
@@ -70,7 +76,6 @@ const SidebarNavModal = ({
               ))}
           </ul>
         </div>
-
         {position === "left" && (
           <div>
             <Link
