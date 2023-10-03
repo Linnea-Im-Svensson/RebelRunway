@@ -6,6 +6,7 @@ import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
 import Head from "next/head";
+import Navbar from "~/components/navbar/Navbar";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -20,6 +21,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
       </Head>
       <div className="flex min-h-screen flex-col items-center justify-start">
         {/* insert navbar component */}
+        <Navbar />
         <Component {...pageProps} />
         {/* insert footer component */}
       </div>
