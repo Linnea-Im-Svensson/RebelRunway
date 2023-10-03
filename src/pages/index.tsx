@@ -1,8 +1,8 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
-import ProductCard from "./components/ProductCard";
+import ProductCard from "../components/products/ProductCard";
 import hoodies from "../../public/hoodie.jpg";
-import ProductContainer from "./components/ProductContainer";
+import ProductContainer from "../components/products/ProductContainer";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
