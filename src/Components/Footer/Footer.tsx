@@ -39,7 +39,7 @@ export default function Footer() {
             <b>Company</b>
           </h1>
 
-          <ul>
+          <ul className="leading-10">
             <li>About us</li>
             <li>Contact us</li>
             <li>Support</li>
@@ -47,24 +47,24 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="mt-10 text-slate-300 md:ml-16 md:mt-0">
+        <div className="mt-10 text-slate-300 md:ml-20 md:mt-0">
           <h1 className="mb-4 text-slate-200">
             <b>Länkar</b>
           </h1>
-          <ul>
+          <ul className="leading-10">
             <li>Länk</li>
-            <li>länk</li>
+            <li>Länk</li>
             <li>Länk</li>
             <li>Länk</li>
           </ul>
         </div>
-        <div className="mt-10 text-slate-300 md:ml-16 md:mt-0">
+        <div className="mt-10 text-slate-300 md:ml-20 md:mt-0">
           <h1 className="mb-4 text-slate-200">
             <b>Länkar</b>
           </h1>
-          <ul>
+          <ul className="leading-10">
             <li>Länk</li>
-            <li>länk</li>
+            <li>Länk</li>
             <li>Länk</li>
             <li>Länk</li>
           </ul>
