@@ -5,7 +5,7 @@ import {
   AiFillLinkedin,
   AiOutlineInstagram,
   AiFillTwitterSquare,
-} from "react-icons/Ai";
+} from "react-icons/ai";
 
 export default function Footer() {
   return (
@@ -43,6 +43,7 @@ export default function Footer() {
             <li>About us</li>
             <li>Contact us</li>
             <li>Support</li>
+            <li>Instagram</li>
           </ul>
         </div>
 
@@ -54,6 +55,7 @@ export default function Footer() {
             <li>Länk</li>
             <li>länk</li>
             <li>Länk</li>
+            <li>Länk</li>
           </ul>
         </div>
         <div className="mt-10 text-slate-300 md:ml-16 md:mt-0">
@@ -63,6 +65,7 @@ export default function Footer() {
           <ul>
             <li>Länk</li>
             <li>länk</li>
+            <li>Länk</li>
             <li>Länk</li>
           </ul>
         </div>
