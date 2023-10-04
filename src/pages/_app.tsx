@@ -5,7 +5,6 @@ import Navbar from "~/Components/navbar/Navbar";
 import Footer from "~/Components/Footer/Footer";
 
 import { api } from "~/utils/api";
-
 import "~/styles/globals.css";
 import Head from "next/head";
 
