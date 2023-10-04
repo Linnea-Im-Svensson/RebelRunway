@@ -72,7 +72,8 @@ model VerificationToken {
 model Product {
     id          String   @id @default(cuid())
     name        String
-    category    String
+    category    Category
+    subCategory SubCategory
     price       Int
     image       String
     size        Size   
@@ -94,6 +95,26 @@ enum Size {
     m
     l
     xl
+}
+
+enum Category {
+    clothes
+    shoes
+    sport
+}
+
+enum SubCategory {
+    dresses
+    shirts
+    skirts
+    pants
+    blouses
+    sneakers
+    flats
+    heels
+    boots
+    tights
+    tops
 }
 
 model Cart {
