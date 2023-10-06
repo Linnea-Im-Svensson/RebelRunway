@@ -7,7 +7,7 @@ async function main() {
         name: "Red Dress",
         color: "red",
         category: "clothes",
-        subCategory: "dresses",
+        SubCategory: "dresses",
         price: 199,
         size: "s",
         image: "/red-dress.jpg",
