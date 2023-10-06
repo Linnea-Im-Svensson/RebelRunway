@@ -1,5 +1,3 @@
-import FaSquareInstagram from "react-icons/fa";
-
 import {
   AiFillFacebook,
   AiFillLinkedin,
