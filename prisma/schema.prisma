@@ -70,23 +70,24 @@ model VerificationToken {
 }
 
 model Product {
-    id          String   @id @default(cuid())
+    id          String      @id @default(cuid())
     name        String
     category    Category
     subCategory SubCategory
     price       Int
     image       String
-    size        Size   
+    size        Size?
+    shoeSize    ShoeSize?
     tags        Tag[]
     color       String
     cart        Cart[] //many to many relation
 }
 
 model Tag {
-    id          Int      @id @default(autoincrement())
-    name        String  
-    product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)   
-    productId   String
+    id        Int     @id @default(autoincrement())
+    name      String
+    product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+    productId String
 }
 
 enum Size {
@@ -95,6 +96,19 @@ enum Size {
     m
     l
     xl
+}
+
+enum ShoeSize {
+    SIZE_36
+    SIZE_37
+    SIZE_38
+    SIZE_39
+    SIZE_40
+    SIZE_41
+    SIZE_42
+    SIZE_43
+    SIZE_44
+    SIZE_45
 }
 
 enum Category {
@@ -118,8 +132,8 @@ enum SubCategory {
 }
 
 model Cart {
-    id          String   @id @default(cuid())
-    product     Product[] //many-to-many relation
-    user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId      String  @unique
+    id      String    @id @default(cuid())
+    product Product[] //many-to-many relation
+    user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId  String    @unique
 }
