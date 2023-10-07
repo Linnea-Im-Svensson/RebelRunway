@@ -1,10 +1,12 @@
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
+import Navbar from "~/components/navbar/Navbar";
+import Footer from "~/components/footer/Footer";
 import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Head from "next/head";
-import Navbar from "~/components/navbar/Navbar";
+import "~/styles/globals.css";
 import ThemeProvider from "~/components/themes/ThemeProvider";
 
 const MyApp: AppType<{ session: Session | null }> = ({
@@ -20,11 +22,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <div className="flex min-h-screen flex-col items-center justify-start">
-          {/* insert navbar component */}
           <Navbar />
           <Component {...pageProps} />
-          {/* insert footer component */}
         </div>
+        <Footer />
       </ThemeProvider>
     </SessionProvider>
   );

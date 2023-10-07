@@ -10,7 +10,6 @@ import SearchBar from "./SearchBar";
 import SidebarNavModal from "./SidebarNavModal";
 import Logo from "./Logo";
 import ThemeToggleBtn from "../themes/ThemeToggleBtn";
-import ThemeToggleBtnTwo from "../themes/ThemeToggleBtn";
 
 const Navbar = () => {
   const { data: sessionData } = useSession();
