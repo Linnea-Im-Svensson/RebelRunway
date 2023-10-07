@@ -1,35 +1,50 @@
-import { useState } from "react";
-import { BsSun } from "react-icons/bs";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import { BsSun } from "react-icons/bs";
+import { FaMoon } from "react-icons/fa";
 
-const DropDownMenu = () => {
-  const [showMenuOptions, setShowMenuOptions] = useState(false);
-  const { setTheme } = useTheme();
+const ThemeToggleBtn = () => {
+  const { setTheme, systemTheme } = useTheme();
+  const [currentTheme, setCurrentTheme] = useState<
+    "light" | "dark" | undefined
+  >();
+
+  useEffect(() => {
+    const localStorageTheme = localStorage.getItem("theme");
+
+    if (localStorageTheme === "light" || localStorageTheme === "dark") {
+      setCurrentTheme(localStorageTheme);
+    } else {
+      setCurrentTheme(systemTheme);
+    }
+  }, []);
+
+  const handleThemeChange = () => {
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+
+    setCurrentTheme(newTheme);
+  };
 
   return (
     <div
-      className="relative flex h-10 w-fit flex-col items-center justify-center"
-      onClick={() => setShowMenuOptions((prev) => !prev)}
+      className={`items-center" justify-start" flex h-8 w-14 rounded-2xl bg-slate-200 transition-all dark:bg-slate-600 ${
+        currentTheme === "light" ? "pr-6" : "pl-6"
+      }`}
     >
-      <BsSun />
-      {showMenuOptions && (
-        <div className="absolute -left-16 top-0 z-40 flex flex-col items-center justify-start rounded-md  bg-slate-300 text-black">
-          <button
-            onClick={() => setTheme("light")}
-            className="w-full rounded-t-md p-2 hover:bg-slate-400"
-          >
-            Light
-          </button>
-          <button
-            onClick={() => setTheme("dark")}
-            className="w-full rounded-b-md p-2 hover:bg-slate-400"
-          >
-            Dark
-          </button>
-        </div>
+      {currentTheme === "light" ? (
+        <FaMoon
+          className="m-1 h-6 w-6 rounded-full border-2 border-black p-1"
+          onClick={handleThemeChange}
+        />
+      ) : (
+        <BsSun
+          className="m-1 h-6 w-6 rounded-full bg-black p-1"
+          onClick={handleThemeChange}
+        />
       )}
     </div>
   );
 };
 
-export default DropDownMenu;
+export default ThemeToggleBtn;
