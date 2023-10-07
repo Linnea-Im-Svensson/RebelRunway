@@ -9,6 +9,7 @@ import CategoryLink from "./CategoryLink";
 import SearchBar from "./SearchBar";
 import SidebarNavModal from "./SidebarNavModal";
 import Logo from "./Logo";
+import ThemeToggleBtn from "../themes/ThemeToggleBtn";
 
 const Navbar = () => {
   const { data: sessionData } = useSession();
@@ -118,6 +119,7 @@ const Navbar = () => {
           {/* right group container login/favourite/cart*/}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-4">
+              <ThemeToggleBtn />
               <p className="hidden lg:block">
                 {sessionData?.user ? sessionData.user.name : "Login"}
               </p>
