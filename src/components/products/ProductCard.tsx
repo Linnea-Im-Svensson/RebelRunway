@@ -24,8 +24,10 @@ function ProductCard({ productName, img, cta, url }: CardProps) {
         />
       </div>
 
-      <div className="font-poppins py-6">
-        <div className="text-xl font-medium text-[#191919]">{productName}</div>
+      <div className="py-6 font-poppins">
+        <div className="text-xl font-medium text-[#191919] dark:text-neutral-200">
+          {productName}
+        </div>
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium text-[#7F7F7F]">{cta}</p>
           <Link href={url}>
