@@ -24,7 +24,7 @@ const CategoryChildLink = ({
       }}
       href={link}
       className={`${
-        isSideNavbar && "border-b-2 border-amber-200 dark:border-slate-900"
+        isSideNavbar && "border-b-2 border-neutral-200 dark:border-neutral-900"
       }`}
     >
       <div

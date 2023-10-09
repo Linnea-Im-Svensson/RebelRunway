@@ -120,7 +120,7 @@ const Navbar = () => {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-4">
               <ThemeToggleBtn />
-              <p className="hidden lg:block">
+              <p className="hidden cursor-pointer lg:block">
                 {sessionData?.user ? sessionData.user.name : "Login"}
               </p>
               <FaRegUserCircle
@@ -128,19 +128,20 @@ const Navbar = () => {
                 onClick={() => {
                   sessionData?.user ? signOut() : signIn();
                 }}
+                className="hover:text-primary cursor-pointer "
               />
             </div>
-            <BiHeart size={30} />
+            <BiHeart size={30} className="hover:text-primary cursor-pointer" />
             <BiShoppingBag
               size={30}
-              className="hover:cursor-pointer"
+              className="hover:text-primary cursor-pointer"
               onClick={() => setShowRightSideModal((prev) => !prev)}
             />
           </div>
         </div>
         {/* hidden middle row searchbar */}
         <div
-          className={`block h-14 w-full border-b-2 border-slate-200 bg-white px-2 transition-all dark:border-slate-800 dark:bg-black md:hidden ${
+          className={`block h-14 w-full border-b-2 border-slate-200 bg-white px-2 transition-all dark:border-neutral-800 dark:bg-black md:hidden ${
             scrollPosition.y > scrollPosition.lastY &&
             !showChildLinks &&
             " -translate-y-[97%]"
@@ -154,7 +155,7 @@ const Navbar = () => {
             scrollPosition.y > scrollPosition.lastY &&
             !showChildLinks &&
             " -translate-y-[97%]"
-          } hidden w-full items-center justify-start gap-6 border-b-2 border-b-slate-200 bg-white transition-all dark:border-b-slate-800 dark:bg-black dark:text-slate-100 md:flex `}
+          } hidden w-full items-center justify-start gap-6 border-b-2 border-b-slate-200 bg-white transition-all dark:border-b-neutral-800 dark:bg-black dark:text-slate-100 md:flex `}
         >
           {navCategories.map((category) => (
             <CategoryLink key={category.title} {...category} />

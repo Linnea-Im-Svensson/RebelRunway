@@ -21,7 +21,7 @@ export default function Home() {
           </>
         }
         bgImg={bgWomanHat.src}
-        bgColor="#E8DA7B"
+        bgColor="bg-primary"
         alt="Woman wearing a black hat"
       />
 
