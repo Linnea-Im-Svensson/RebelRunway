@@ -10,6 +10,7 @@ import SearchBar from "./SearchBar";
 import SidebarNavModal from "./SidebarNavModal";
 import Logo from "./Logo";
 import ThemeToggleBtn from "../themes/ThemeToggleBtn";
+import Link from "next/link";
 
 const Navbar = () => {
   const { data: sessionData } = useSession();
@@ -123,13 +124,12 @@ const Navbar = () => {
               <p className="hidden cursor-pointer lg:block">
                 {sessionData?.user ? sessionData.user.name : "Login"}
               </p>
-              <FaRegUserCircle
-                size={30}
-                onClick={() => {
-                  sessionData?.user ? signOut() : signIn();
-                }}
-                className="hover:text-primary cursor-pointer "
-              />
+              <Link href="/profile">
+                <FaRegUserCircle
+                  size={30}
+                  className="hover:text-primary cursor-pointer "
+                />
+              </Link>
             </div>
             <BiHeart size={30} className="hover:text-primary cursor-pointer" />
             <BiShoppingBag

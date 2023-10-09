@@ -1,6 +1,6 @@
 import { Product } from "@prisma/client";
 import Image from "next/image";
-import { PiCircleFill } from "react-icons/Pi";
+import { PiCircleFill } from "react-icons/pi";
 
 const ProductPreview = ({ color, image, name, price, id }: Product) => {
   return (
