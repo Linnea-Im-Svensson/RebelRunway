@@ -44,18 +44,6 @@ export default function Home() {
           cta="Explore Now!"
           url="/"
         />
-        <ProductCard
-          productName="Hoodies"
-          img={hoodies}
-          cta="Explore Now!"
-          url="/"
-        />
-        <ProductCard
-          productName="Hoodies"
-          img={hoodies}
-          cta="Explore Now!"
-          url="/"
-        />
       </ProductContainer>
     </>
   );
