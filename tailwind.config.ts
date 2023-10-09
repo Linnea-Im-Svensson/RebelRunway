@@ -7,6 +7,9 @@ export default {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
+      colors: {
+        primary: "#3FC1C9",
+      },
     },
   },
   darkMode: "class",

@@ -28,18 +28,18 @@ const ThemeToggleBtn = () => {
 
   return (
     <div
-      className={`items-center" justify-start" flex h-8 w-14 rounded-2xl bg-slate-200 transition-all dark:bg-slate-600 ${
+      className={`items-center" justify-start" flex h-8 w-14 rounded-2xl bg-slate-200 transition-all dark:bg-neutral-700 ${
         currentTheme === "light" ? "pr-6" : "pl-6"
       }`}
     >
       {currentTheme === "light" ? (
         <FaMoon
-          className="m-1 h-6 w-6 rounded-full border-2 border-black p-1"
+          className="m-1 h-6 w-6 cursor-pointer rounded-full border-2 border-black p-1"
           onClick={handleThemeChange}
         />
       ) : (
         <BsSun
-          className="m-1 h-6 w-6 rounded-full bg-black p-1"
+          className="m-1 h-6 w-6 cursor-pointer rounded-full bg-black p-1"
           onClick={handleThemeChange}
         />
       )}

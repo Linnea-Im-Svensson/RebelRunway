@@ -19,7 +19,7 @@ const CategoryLink = ({
           setSideShowState && setSideShowState(true);
           setChildLinks && childLinks && setChildLinks(childLinks);
         }}
-        className="border-b-2 border-amber-200 dark:border-slate-900"
+        className="border-b-2 border-neutral-200 dark:border-neutral-900"
       >
         <div
           className={`flex h-[57px] w-full items-center gap-2 border-none  px-2`}

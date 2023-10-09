@@ -21,23 +21,11 @@ export default function Home() {
           </>
         }
         bgImg={bgWomanHat.src}
-        bgColor="#E8DA7B"
+        bgColor="bg-primary"
         alt="Woman wearing a black hat"
       />
 
       <ProductContainer title="New Arrivals">
-        <ProductCard
-          productName="Hoodies"
-          img={hoodies}
-          cta="Explore Now!"
-          url="/"
-        />
-        <ProductCard
-          productName="Hoodies"
-          img={hoodies}
-          cta="Explore Now!"
-          url="/"
-        />
         <ProductCard
           productName="Hoodies"
           img={hoodies}
