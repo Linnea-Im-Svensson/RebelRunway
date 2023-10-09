@@ -10,6 +10,7 @@ const Logo = () => {
         priority
         height={70}
         width={120}
+        className="rounded-sm"
       />
     </Link>
   );
