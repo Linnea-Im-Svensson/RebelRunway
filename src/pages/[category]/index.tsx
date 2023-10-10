@@ -1,13 +1,22 @@
+import { Category } from "@prisma/client";
 import { useRouter } from "next/router";
-import ProductGridBox from "~/components/products/ProductGridBox";
+import { z } from "zod";
+import ProductCategoryPageContainer from "~/components/products/ProductCategoryPageContainer";
 import { api } from "~/utils/api";
 
 const categoryPage = () => {
   const router = useRouter();
-  const category = router.query.category;
-  // const products = api.product.getCategoryProducts.useQuery()
+  let category = router.query.category as Category;
 
-  return <div>{category}</div>;
+  const products = api.product.getCategoryProducts.useQuery({
+    category: category,
+  }).data;
+
+  return products ? (
+    <ProductCategoryPageContainer products={products} title={category} />
+  ) : (
+    <div>...loading</div>
+  );
 };
 
 export default categoryPage;
