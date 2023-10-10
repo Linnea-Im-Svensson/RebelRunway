@@ -6,6 +6,7 @@ import hoodies from "../../public/hoodie.jpg";
 import bgWomanHat from "../../public/bgImages/bg-woman-hat.png";
 import ProductContainer from "../components/products/ProductContainer";
 import SectionContainer from "../components/sections/SectionContainer";
+import Banner from "~/Components/banner/Banner";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
@@ -24,6 +25,7 @@ export default function Home() {
         bgColor="bg-primary"
         alt="Woman wearing a black hat"
       />
+      <Banner />
 
       <ProductContainer title="New Arrivals">
         <ProductCard
