@@ -12,7 +12,7 @@ type ContainerProps = {
 function SectionContainer({ heading, bgImg, alt, bgColor }: ContainerProps) {
   return (
     <section
-      className={`flex items-center justify-around rounded-lg ${bgColor} mt-20`}
+      className={`flex items-center justify-around rounded-lg ${bgColor} mx-4 mt-20`}
     >
       <div className="pl-10 pr-10 pt-6 md:mr-20 md:pl-32">
         <h1 className="font-poppins text-2xl font-bold md:text-4xl">
