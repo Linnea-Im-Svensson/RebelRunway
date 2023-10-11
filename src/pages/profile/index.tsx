@@ -1,14 +1,27 @@
 import React from "react";
-import Order from "~/Components/profile/Order";
+import UserInfo from "~/components/profile/UserInfo";
+import Order from "~/components/profile/Order";
 import blueSneakers from "../../../public/blue-sneakers.jpg";
 import beigeHoodie from "../../../public/beige-hoodie.jpg";
 import whiteSneakers from "../../../public/white-sneakers.jpg";
 import pinkPants from "../../../public/pink-pants.jpg";
-import Wishlist from "~/Components/profile/Wishlist";
+import Wishlist from "~/components/profile/Wishlist";
+import profilePic from "../../../public/joseph-gonzalez.jpg";
 
 const profilePage = () => {
   return (
     <main>
+      <h1 className="mt-8 text-3xl font-bold">My Profile</h1>
+      <UserInfo
+        img={profilePic}
+        alt="profilePic"
+        fullName="Joseph Gonzalez"
+        email="joseph.gonzalez@test.com"
+        street="3695 Rose Avenue"
+        postalCode={70001}
+        city="Metairie"
+        country="United States of America"
+      />
       <h1 className="mt-8 text-3xl font-bold">My Orders</h1>
       <Order
         orderNr="Order No: 123456789"
