@@ -7,7 +7,7 @@ import {
 
 export default function Footer() {
   return (
-    <div className="flex flex-col justify-between border border-black bg-neutral-800 p-28 dark:bg-neutral-900 md:flex-row">
+    <div className="flex flex-col justify-between border border-neutral-700 bg-neutral-800 p-28 dark:bg-neutral-800 md:flex-row">
       <div>
         <div className="mb-20 text-slate-300 ">
           <p className="mb-4 text-2xl text-slate-200">
