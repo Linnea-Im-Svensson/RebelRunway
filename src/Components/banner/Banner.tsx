@@ -1,7 +1,7 @@
 const Banner = () => {
   return (
     <div>
-      <div className="flex gap-16 rounded-md bg-slate-50 px-14 py-3">
+      <div className="flex gap-16 rounded-md bg-white px-14 py-3">
         <img
           className="obejct-scale-down w-15 h-20"
           src="adidas.jpg"
