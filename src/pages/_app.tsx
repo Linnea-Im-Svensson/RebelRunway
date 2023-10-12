@@ -2,7 +2,7 @@ import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
 import Navbar from "~/Components/navbar/Navbar";
-import Footer from "~/Components/footer/Footer";
+import Footer from "~/Components/Footer/Footer";
 import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Head from "next/head";
