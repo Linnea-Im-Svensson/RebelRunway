@@ -1,40 +1,22 @@
 const Banner = () => {
   return (
-    <div>
-      <div className="flex gap-16 rounded-md bg-white px-14 py-3">
-        <img
-          className="obejct-scale-down w-15 h-20"
-          src="adidas.jpg"
-          alt="adidas"
-        />
+    <div className=" flex w-screen justify-center gap-2 overflow-hidden rounded-md bg-white px-2 md:w-auto md:justify-around md:gap-20 md:rounded-md md:px-8">
+      <img className="h-12 md:h-20" src="adidas.jpg" alt="adidas" />
 
-        <img
-          className="obejct-scale-down w-15 h-20 "
-          src="the-north-face.jpg
-        "
-          alt="theNorthFace"
-        />
-        <img
-          className="obejct-scale-down w-15 h-20"
-          src="reebok.jpg"
-          alt="Reebok"
-        />
-        <img
-          className="obejct-scale-down w-15 h-20 "
-          src="nike.jpg"
-          alt="Nike"
-        />
-        <img
-          className="obejct-scale-down w-15 h-20"
-          src="stone-island.jpg"
-          alt="Stone Island"
-        />
-        <img
-          className="obejct-scale-down w-15 h-20"
-          src="vans.jpg"
-          alt="Vans"
-        />
-      </div>
+      <img
+        className="h-12 md:h-20"
+        src="the-north-face.jpg"
+        alt="The North Face"
+      />
+      <img className=" h-12 md:h-20" src="reebok.jpg" alt="Reebok" />
+
+      <img className="h-12 md:h-20 md:w-20" src="nike.jpg" alt="Nike" />
+      <img
+        className="h-12 md:h-20 "
+        src="stone-island.jpg"
+        alt="Stone Island"
+      />
+      <img className="h-12 md:h-20 md:w-20" src="vans.jpg" alt="Vans" />
     </div>
   );
 };
