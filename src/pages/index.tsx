@@ -6,6 +6,7 @@ import hoodies from "../../public/hoodie.jpg";
 import bgWomanHat from "../../public/bgImages/bg-woman-hat.png";
 import ProductContainer from "~/Components/products/ProductContainer";
 import SectionContainer from "~/Components/sections/SectionContainer";
+import MiddleSection from "~/Components/sections/MiddleSection";
 import Banner from "~/Components/banner/Banner";
 
 export default function Home() {
@@ -47,6 +48,7 @@ export default function Home() {
           url="/"
         />
       </ProductContainer>
+      <MiddleSection />
     </>
   );
 }
