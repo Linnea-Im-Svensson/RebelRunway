@@ -46,8 +46,8 @@ const Navbar = () => {
   // move this object to another file later when redux/ctx is added
   const navCategories: CategoryLinkInfo[] = [
     {
-      title: "New",
-      link: "/new",
+      title: "News",
+      link: "/news",
     },
     {
       title: "Clothes",
@@ -127,14 +127,14 @@ const Navbar = () => {
               <Link href="/profile">
                 <FaRegUserCircle
                   size={30}
-                  className="hover:text-primary cursor-pointer "
+                  className="cursor-pointer hover:text-primary "
                 />
               </Link>
             </div>
-            <BiHeart size={30} className="hover:text-primary cursor-pointer" />
+            <BiHeart size={30} className="cursor-pointer hover:text-primary" />
             <BiShoppingBag
               size={30}
-              className="hover:text-primary cursor-pointer"
+              className="cursor-pointer hover:text-primary"
               onClick={() => setShowRightSideModal((prev) => !prev)}
             />
           </div>
