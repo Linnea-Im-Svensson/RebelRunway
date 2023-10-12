@@ -7,6 +7,7 @@ import bgWomanHat from "../../public/bgImages/bg-woman-hat.png";
 import ProductContainer from "~/Components/products/ProductContainer";
 import SectionContainer from "~/Components/sections/SectionContainer";
 import MiddleSection from "~/Components/sections/MiddleSection";
+import manBuyingShoes from "../../public/bgImages/man-shoes.png";
 import Banner from "~/Components/banner/Banner";
 
 export default function Home() {
@@ -48,7 +49,18 @@ export default function Home() {
           url="/"
         />
       </ProductContainer>
-      <MiddleSection />
+      <MiddleSection
+        heading={
+          <>
+            <span className="block">EXPLORE</span>
+            <span className="block">UNIQUE</span>
+            <span className="block">SHOES</span>
+          </>
+        }
+        alt="man buying shoes"
+        bgColor="bg-primary"
+        myImg={manBuyingShoes}
+      />
     </>
   );
 }
