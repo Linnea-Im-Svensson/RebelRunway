@@ -4,6 +4,7 @@ import { Product, Category, Size, ShoeSize } from "@prisma/client";
 interface DropdownProps {
   products: Product[];
   productCategory: Category;
+  onSizeChange: (size: Size) => void;
 }
 
 export default function Dropdown({ productCategory }: DropdownProps) {
