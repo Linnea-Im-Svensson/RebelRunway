@@ -24,13 +24,13 @@ const middleSection = ({ heading, myImg, alt, bgColor }: sectionProps) => {
           Explore Now
         </button>
       </div>
-      <div>
+      <div className="">
         <Image
           src={myImg}
-          width={600}
-          height={700}
+          width={400}
+          height={500}
           alt={alt}
-          className="max-h-[100%] rounded-md"
+          className="max-h-[100%] "
         />
       </div>
     </section>

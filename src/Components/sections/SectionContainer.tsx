@@ -31,8 +31,8 @@ function SectionContainer({ heading, bgImg, alt, bgColor }: ContainerProps) {
         <Image
           src={bgImg}
           alt={alt}
-          width={400}
-          height={500}
+          width={300}
+          height={400}
           className="max-h-[100%]"
         />
       </div>
