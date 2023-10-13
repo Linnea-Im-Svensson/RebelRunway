@@ -99,7 +99,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 flex h-fit w-full flex-col">
+      <nav className="sticky top-0 z-10 flex h-fit w-full flex-col">
         {/* first row container*/}
         <div
           onMouseEnter={() => setShowChildLinks(false)}

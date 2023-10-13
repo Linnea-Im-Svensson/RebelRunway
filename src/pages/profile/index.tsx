@@ -1,10 +1,10 @@
 import React from "react";
-import Order from "~/Components/profile/Order";
+import Order from "~/components/profile/Order";
 import blueSneakers from "../../../public/blue-sneakers.jpg";
 import beigeHoodie from "../../../public/beige-hoodie.jpg";
 import whiteSneakers from "../../../public/white-sneakers.jpg";
 import pinkPants from "../../../public/pink-pants.jpg";
-import Wishlist from "~/Components/profile/Wishlist";
+import Wishlist from "~/components/profile/Wishlist";
 
 const profilePage = () => {
   return (

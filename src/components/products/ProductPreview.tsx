@@ -1,13 +1,17 @@
 import { Product } from "@prisma/client";
 import Image from "next/image";
 import { PiCircleFill } from "react-icons/pi";
+import FavoriteBtn from "../utils/FavoriteBtn";
 
 const ProductPreview = ({ color, image, name, price, id }: Product) => {
   return (
     <div
       key={id}
-      className="flex flex-col items-center gap-1 md:m-2 md:items-start"
+      className="relative flex flex-col items-center gap-1 md:m-2 md:items-start"
     >
+      <div className="absolute left-3 top-3">
+        <FavoriteBtn productId={id} />
+      </div>
       <Image
         className="h-auto max-w-full rounded-lg"
         src={image}
