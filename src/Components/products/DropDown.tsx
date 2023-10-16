@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Product, Category, Size, ShoeSize } from "@prisma/client";
+import AddToCartButton from "./AddToCartButton";
 
 interface DropdownProps {
   products: Product[];
   productCategory: Category;
-  onSizeChange: (size: Size) => void;
 }
 
 export default function Dropdown({ productCategory }: DropdownProps) {
