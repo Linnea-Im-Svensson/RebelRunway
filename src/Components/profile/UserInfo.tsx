@@ -1,13 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import type { StaticImageData } from "next/image";
+import { useSession } from "next-auth/react";
+import {User} from "@prisma/client"
+
 
 type userProps = {
   img: StaticImageData | string;
   alt: string;
-  fullName: string;
+  fullName: string | null;
   email: string;
-  street: string;
+  streetName: string | undefined | null;
   postalCode: number;
   city: string;
   country: string;
@@ -15,13 +18,15 @@ type userProps = {
 const UserInfo = ({
   img,
   alt,
-  fullName,
-  email,
-  street,
+  // fullName,
+  // email,
+  // streetName,
   postalCode,
   city,
   country,
 }: userProps) => {
+  const { data: sessionData } = useSession();
+
   return (
     <section className="mt-2 w-[90vw] md:w-[50vw]">
       <div className="mt-4 rounded-md bg-[#ebeef2] p-10 dark:text-black">
@@ -35,13 +40,23 @@ const UserInfo = ({
             </div>
             <div className="ml-4 mt-6">
               <p className="font-semibold">
-                Name: <span className="font-normal">{fullName}</span>
+                Name:{" "}
+                <span className="font-normal">
+                  {sessionData?.user ? sessionData.user.name : "Login"}
+                </span>
               </p>
+
               <p className="font-semibold">
-                Email: <span className="font-normal">{email}</span>
+                Email:{" "}
+                <span className="font-normal">
+                  {sessionData?.user ? sessionData.user.email : "Login"}
+                </span>
               </p>
               <p className="mt-4 font-semibold">
-                Street Address: <span className="font-normal">{street}</span>
+                Street Address:{" "}
+                <span className="font-normal">
+                  {sessionData?.user ? sessionData.user. : "Login"}
+                </span>
               </p>
               <p className="font-semibold">
                 Postal Code: <span className="font-normal">{postalCode}</span>

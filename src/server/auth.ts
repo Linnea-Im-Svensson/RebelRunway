@@ -25,7 +25,7 @@ declare module "next-auth" {
     };
   }
 
-  // interface User {
+   interface User {
   //   // ...other properties
   //   // role: UserRole;
   // }
