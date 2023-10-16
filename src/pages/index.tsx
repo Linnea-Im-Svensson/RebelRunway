@@ -1,14 +1,14 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
-import ProductCard from "~/Components/products/ProductCard";
+import ProductCard from "~/components/products/ProductCard";
 import hoodies from "../../public/hoodie.jpg";
 // import bgYellow from "../../public/bgImages/bg-yellow.jpg";
 import bgWomanHat from "../../public/bgImages/bg-woman-hat.png";
-import ProductContainer from "~/Components/products/ProductContainer";
-import SectionContainer from "~/Components/sections/SectionContainer";
-import MiddleSection from "~/Components/sections/MiddleSection";
+import ProductContainer from "~/components/products/ProductContainer";
+import SectionContainer from "~/components/sections/SectionContainer";
+import MiddleSection from "~/components/sections/MiddleSection";
 import manBuyingShoes from "../../public/bgImages/man-shoes.png";
-import Banner from "~/Components/banner/Banner";
+import Banner from "~/components/banner/Banner";
 
 export default function Home() {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
