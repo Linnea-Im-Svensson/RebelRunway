@@ -1,16 +1,30 @@
-import React from "react";
-import { Product } from "@prisma/client";
+import { Product, Size, ShoeSize } from "@prisma/client";
 import Image from "next/image";
 import { PiCircleFill } from "react-icons/pi";
 import Dropdown from "./DropDown";
 import AddToCartButton from "./AddToCartButton";
+import React, { useState } from "react";
 
 interface ProductPreviewProps {
   product: Product;
+  productId: string;
+  selectedSize: Size | ShoeSize | null;
+  productImage: string;
 }
 
-export default function ProductPreview({ product }: ProductPreviewProps) {
+export default function ProductPreview({
+  product,
+  productId,
+  productImage,
+}: ProductPreviewProps) {
   const { color, image, name, price, id } = product;
+  const [selectedSize, setSelectedSize] = useState<Size | ShoeSize | null>(
+    null,
+  );
+
+  const handleSizeChange = (size: Size | ShoeSize) => {
+    setSelectedSize(size);
+  };
 
   return (
     <div
@@ -25,8 +39,7 @@ export default function ProductPreview({ product }: ProductPreviewProps) {
         height={360}
       />
       <div className="text-xs font-bold">{name}</div>
-      <div className="text-xs font-semibold">{price}kr</div>
-
+      <div className="text-xs font-semibold">{price} kr</div>
       <div>
         <div className="mb-1 mt-1 flex gap-2">
           <PiCircleFill
@@ -43,8 +56,17 @@ export default function ProductPreview({ product }: ProductPreviewProps) {
           />
         </div>
       </div>
-      <Dropdown products={[product]} productCategory={product.category} />
-      <AddToCartButton />
+      <Dropdown
+        products={[product]}
+        productCategory={product.category}
+        onSizeChange={handleSizeChange}
+      />
+      <AddToCartButton
+        selectedSize={selectedSize}
+        productName={name}
+        productImage={productImage}
+        productId={productId}
+      />
     </div>
   );
 }

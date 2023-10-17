@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { Product, Category, Size, ShoeSize } from "@prisma/client";
-import AddToCartButton from "./AddToCartButton";
 
 interface DropdownProps {
   products: Product[];
   productCategory: Category;
+  onSizeChange: (size: Size | ShoeSize) => void;
 }
 
-export default function Dropdown({ productCategory }: DropdownProps) {
+export default function Dropdown({
+  productCategory,
+  onSizeChange,
+}: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSize, setSelectedSize] = useState<Size | ShoeSize | null>(
     null,
@@ -20,6 +23,7 @@ export default function Dropdown({ productCategory }: DropdownProps) {
   const handleItemClick = (size: Size | ShoeSize) => {
     setSelectedSize(size);
     setIsOpen(false);
+    onSizeChange(size);
   };
 
   const allSizes: Array<Size | ShoeSize> =
