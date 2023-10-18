@@ -51,6 +51,7 @@ model Session {
 }
 
 model User {
+<<<<<<< Updated upstream
   id            String    @id @default(cuid())
   name          String?
   email         String?   @unique
@@ -65,6 +66,17 @@ model User {
   postalCode String?
   city       String?
   country    String?
+=======
+    id            String    @id @default(cuid())
+    name          String?
+    email         String?   @unique
+    emailVerified DateTime?
+    image         String?
+    accounts      Account[]
+    sessions      Session[]
+    cart          Cart?
+     address Address?
+>>>>>>> Stashed changes
 }
 
 model VerificationToken {
@@ -73,6 +85,15 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Address {
+    id         String   @id @default(cuid())
+    street     String?
+    postalNumber String?
+    city       String?
+    userId     String @unique //behövde vara unik för att det skulle funka
+    user       User     @relation(fields: [userId], references: [id])
 }
 
 model Product {
