@@ -1,7 +1,3 @@
-import { Category, SubCategory } from "@prisma/client";
-import { useMutation, useQueries, useQuery } from "@tanstack/react-query";
-import { useParams, useRouter } from "next/navigation";
-
 import { useEffect, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
