@@ -121,9 +121,12 @@ const Navbar = () => {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-4">
               <ThemeToggleBtn />
-              <p className="hidden cursor-pointer lg:block">
+              <button
+                onClick={() => signIn()}
+                className="hidden cursor-pointer lg:block"
+              >
                 {sessionData?.user ? sessionData.user.name : "Login"}
-              </p>
+              </button>
               <Link href="/profile">
                 <FaRegUserCircle
                   size={30}
