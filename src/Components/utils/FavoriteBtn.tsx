@@ -14,13 +14,13 @@ const FavoriteBtn = ({ productId }: FavoriteBtnProps) => {
   const [favorited, setFavorited] = useState(false);
 
   const { mutate, isLoading } = api.favorite.addOrRemoveFavorites.useMutation({
+    onMutate: () => {
+      setFavorited(!favorited);
+    },
     onSuccess: () => {
       ctx.favorite.getFavoriteProducts.invalidate();
-      checkIfFavorited();
     },
   });
-
-  console.log("favorite products: ", favoriteProducts);
 
   const checkIfFavorited = () => {
     favoriteProducts?.forEach((product) => {
