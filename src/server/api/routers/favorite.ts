@@ -9,14 +9,24 @@ import {
 export const favoriteRouter = createTRPCRouter({
   addToFavorites: protectedProcedure
     .input(z.object({ productId: z.string() }))
-    .mutation(({ ctx, input }) => {
-      console.log(ctx.session.user.id + " " + input.productId);
-      return ctx.db.favorite.create({
-        data: {
-          userId: ctx.session.user.id,
+    .mutation(async ({ ctx, input }) => {
+      const alreadyLiked = await ctx.db.favorite.findFirst({
+        where: {
           productId: input.productId,
+          userId: ctx.session.user.id,
         },
       });
+
+      if (alreadyLiked !== null) {
+        return ctx.db.favorite.delete({ where: { id: alreadyLiked.id } });
+      } else {
+        return ctx.db.favorite.create({
+          data: {
+            userId: ctx.session.user.id,
+            productId: input.productId,
+          },
+        });
+      }
     }),
   getFavoriteProducts: protectedProcedure.query(({ ctx }) => {
     return ctx.db.favorite.findMany({
