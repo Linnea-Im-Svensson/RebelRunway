@@ -7,7 +7,7 @@ import {
 } from "~/server/api/trpc";
 
 export const favoriteRouter = createTRPCRouter({
-  addToFavorites: protectedProcedure
+  addOrRemoveFavorites: protectedProcedure
     .input(z.object({ productId: z.string() }))
     .mutation(async ({ ctx, input }) => {
       const alreadyLiked = await ctx.db.favorite.findFirst({

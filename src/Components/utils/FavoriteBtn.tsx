@@ -13,7 +13,7 @@ const FavoriteBtn = ({ productId }: FavoriteBtnProps) => {
   const favoriteProducts = api.favorite.getFavoriteProducts.useQuery().data;
   const [favorited, setFavorited] = useState(false);
 
-  const { mutate, isLoading } = api.favorite.addToFavorites.useMutation({
+  const { mutate, isLoading } = api.favorite.addOrRemoveFavorites.useMutation({
     onSuccess: () => {
       ctx.favorite.getFavoriteProducts.invalidate();
       checkIfFavorited();
