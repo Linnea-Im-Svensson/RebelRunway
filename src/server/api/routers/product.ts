@@ -32,4 +32,16 @@ export const productRouter = createTRPCRouter({
         },
       });
     }),
+  getSearchedProducts: publicProcedure
+    .input(z.object({ search: z.string() }))
+    .query(({ ctx, input }) => {
+      return ctx.db.product.findMany({
+        where: {
+          name: {
+            search: input.search,
+          },
+        },
+        take: 5,
+      });
+    }),
 });
