@@ -3,6 +3,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { api } from "~/utils/api";
 import Loading from "./Loading";
+import { useSession } from "next-auth/react";
 
 type FavoriteBtnProps = {
   productId: string;
@@ -10,7 +11,9 @@ type FavoriteBtnProps = {
 
 const FavoriteBtn = ({ productId }: FavoriteBtnProps) => {
   const ctx = api.useContext();
-  const favoriteProducts = api.favorite.getFavoriteProducts.useQuery().data;
+  const { data: sessionData } = useSession();
+  const favoriteProducts =
+    sessionData?.user && api.favorite.getFavoriteProducts.useQuery().data;
   const [favorited, setFavorited] = useState(false);
 
   const { mutate, isLoading } = api.favorite.addOrRemoveFavorites.useMutation({
@@ -37,6 +40,7 @@ const FavoriteBtn = ({ productId }: FavoriteBtnProps) => {
     <button
       onClick={() => mutate({ productId })}
       className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-neutral-50 bg-white"
+      disabled={!sessionData?.user}
     >
       {isLoading && <Loading fillColor="fill-red-600" />}
       <p className="text-black">
