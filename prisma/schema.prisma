@@ -3,6 +3,7 @@
 
 generator client {
     provider = "prisma-client-js"
+    previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -83,6 +84,8 @@ model Product {
     color       String
     cart        Cart[] //many to many relation
     favoritedByUsers   Favorite[]
+
+    @@index([name])
 }
 
 model Favorite {
