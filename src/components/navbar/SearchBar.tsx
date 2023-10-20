@@ -2,6 +2,7 @@ import { BsSearch } from "react-icons/bs";
 import SearchBarModal from "./SearchBarModal";
 import { useState } from "react";
 import { api } from "~/utils/api";
+import Link from "next/link";
 
 const SearchBar = () => {
   const [showSearchModal, setShowSearchModal] = useState<boolean>(false);
@@ -34,10 +35,15 @@ const SearchBar = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <BsSearch
-          size={25}
-          className="absolute right-2 top-[50%] -translate-y-[50%] "
-        />
+        <Link
+          href={input !== "" ? `/search/${input}` : ""}
+          onClick={() => setInput("")}
+        >
+          <BsSearch
+            size={25}
+            className="absolute right-2 top-[50%] -translate-y-[50%] "
+          />
+        </Link>
         {showSearchModal && <SearchBarModal products={data} search={input} />}
       </div>
     </>
