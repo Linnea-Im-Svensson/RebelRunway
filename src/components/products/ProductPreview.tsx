@@ -66,6 +66,7 @@ export default function ProductPreview({
         productName={name}
         productImage={productImage}
         productId={productId}
+        price={price}
       />
     </div>
   );
