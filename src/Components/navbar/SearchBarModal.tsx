@@ -2,6 +2,7 @@ import { Product } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Loading from "../utils/Loading";
 
 type SearchBarModalProps = {
   products: Product[] | undefined;

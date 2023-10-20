@@ -3,10 +3,14 @@ import SearchBarModal from "./SearchBarModal";
 import { useState } from "react";
 import { api } from "~/utils/api";
 import Link from "next/link";
+import Loading from "../utils/Loading";
 
 const SearchBar = () => {
   const [showSearchModal, setShowSearchModal] = useState<boolean>(false);
   const [input, setInput] = useState<string>("");
+
+  const test = "en bra dag";
+  console.log(test.split(" ").join("&"));
 
   const { data, isLoading } = api.product.getSearchedProducts.useQuery({
     search: input,
@@ -39,10 +43,16 @@ const SearchBar = () => {
           href={input !== "" ? `/search/${input}` : ""}
           onClick={() => setInput("")}
         >
-          <BsSearch
-            size={25}
-            className="absolute right-2 top-[50%] -translate-y-[50%] "
-          />
+          {isLoading ? (
+            <div className="absolute right-2 top-[50%] -translate-y-[50%] ">
+              <Loading fillColor="fill-neutral-600" />
+            </div>
+          ) : (
+            <BsSearch
+              size={25}
+              className="absolute right-2 top-[50%] -translate-y-[50%] "
+            />
+          )}
         </Link>
         {showSearchModal && <SearchBarModal products={data} search={input} />}
       </div>
