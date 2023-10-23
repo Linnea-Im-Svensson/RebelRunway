@@ -68,7 +68,7 @@ export default function AddToCartButton({
       </button>
 
       {isModalOpen && (
-        <div className="fixed left-0 top-0 flex h-full w-full items-center justify-center">
+        <div className="fixed left-0 top-0 z-[9999] flex h-full w-full items-center justify-center">
           <div className="rounded bg-white p-4 shadow-md">
             <p>Product has been added to the cart.</p>
             <div className="mt-4 flex justify-center">

@@ -1,7 +1,10 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import cardtype from "public/cardtypes.png";
+
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { AiOutlineLock } from "react-icons/ai";
 
 interface CartItem {
   productId: string;
@@ -21,6 +24,13 @@ const Cart = () => {
 
   const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isChecked3, setIsChecked3] = useState(false);
+  const [isChecked4, setIsChecked4] = useState(false);
+  const [isChecked5, setIsChecked5] = useState(false);
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardName, setCardName] = useState("");
+  const [cardDate, setCardDate] = useState("");
+  const [cardCode, setCardCode] = useState("");
 
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
@@ -91,10 +101,139 @@ const Cart = () => {
     }
     return total;
   }
+  const handleCheckbox3Change = () => {
+    setIsChecked3(true);
+    setIsChecked4(false);
+    setIsChecked5(false);
+  };
 
-  if (productId && selectedSize && productName && productImage) {
-    return (
-      <div className="flex w-[300px] flex-col border border-gray-200 p-2">
+  const handleCheckbox4Change = () => {
+    setIsChecked4(true);
+    setIsChecked3(false);
+    setIsChecked5(false);
+  };
+  const handleCheckbox5Change = () => {
+    setIsChecked5(true);
+    setIsChecked3(false);
+    setIsChecked4(false);
+  };
+
+  return (
+    <div className="flex flex-col gap-2 md:flex-row">
+      <div>
+        <div className="">
+          <h1 className="mb-5 mt-10 font-poppins text-3xl font-bold text-neutral-700 dark:text-slate-100">
+            Payment method
+          </h1>
+          <p className="text-sm">All transactions are secure and encrypted.</p>
+        </div>
+        <div className="flex flex-col  bg-slate-100 p-4 font-poppins dark:text-slate-700 ">
+          <div className="border-b border-gray-200 p-2">
+            <div className="m-2 ">
+              <label className="flex items-center space-x-1 font-semibold text-neutral-700 ">
+                <input
+                  type="checkbox"
+                  checked={isChecked3}
+                  onChange={handleCheckbox3Change}
+                  className="mr-1"
+                />
+                Credit Card
+              </label>
+              <div className="flex flex-col gap-2 dark:text-slate-700">
+                <p className="text-sm text-neutral-700">
+                  We accept all major credit cards.
+                </p>
+                <Image src={cardtype} alt={"cardtypes"} width={170} />
+              </div>
+            </div>
+            <div className=" m-2 flex flex-col gap-2 md:flex-row">
+              <div className="flex flex-col gap-2">
+                <div className=" border border-gray-400">
+                  <input
+                    className="p-2"
+                    type="text"
+                    id="cardNumber"
+                    name="cardNumber"
+                    value={cardNumber}
+                    onChange={(e) => setCardNumber(e.target.value)}
+                    placeholder="Card number🔒"
+                    style={{ background: "transparent", width: "100%" }}
+                  />
+                </div>
+                <div className="border border-gray-400">
+                  <input
+                    className=" p-2"
+                    type="text"
+                    id="cardName"
+                    name="cardName"
+                    value={cardName}
+                    onChange={(e) => setCardName(e.target.value)}
+                    placeholder="Name of cardholder"
+                    style={{ background: "transparent", width: "100%" }}
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <div className="border border-gray-400">
+                  <input
+                    className="p-2"
+                    type="text"
+                    id="cardDate"
+                    name="cardDate"
+                    value={cardDate}
+                    onChange={(e) => setCardDate(e.target.value)}
+                    placeholder="Expiration date (MM/YY)"
+                    style={{ background: "transparent", width: "100%" }}
+                  />
+                </div>
+                <div className=" border border-gray-400">
+                  <input
+                    className="p-2"
+                    type="text"
+                    id="cardCode"
+                    name="cardCode"
+                    value={cardCode}
+                    onChange={(e) => setCardCode(e.target.value)}
+                    placeholder="Security code"
+                    style={{ background: "transparent", width: "100%" }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className=" mt-2 border-b border-gray-200 p-2">
+            <label className="flex items-center space-x-1 font-semibold text-neutral-700">
+              <input
+                type="checkbox"
+                checked={isChecked4}
+                onChange={handleCheckbox4Change}
+                className="mr-1"
+              />
+              Cash on delivery
+            </label>
+            <p className="text-sm text-neutral-700">
+              Pay with cash upon delivery.
+            </p>
+          </div>
+          <div className="mt-2 p-2">
+            <label className="flex items-center space-x-1 font-semibold text-neutral-700">
+              <input
+                type="checkbox"
+                checked={isChecked5}
+                onChange={handleCheckbox5Change}
+                className="mr-1"
+              />
+              Paypal
+            </label>
+          </div>
+        </div>
+        <div className="mt-4">
+          <button className="rounded-sm bg-black px-8 py-2 font-poppins text-white hover:bg-gray-600 dark:bg-slate-200 dark:font-semibold dark:text-black  dark:hover:bg-white">
+            Pay Now
+          </button>
+        </div>
+      </div>
+      <div className="flex flex-col border border-gray-200 p-2">
         <div>
           <p className="p-2 text-center font-bold underline">Order Summary</p>
         </div>
@@ -119,9 +258,7 @@ const Cart = () => {
                   <div className="flex flex-col justify-between">
                     <div className="flex gap-2">
                       <span className="font-semibold">{item.productName}</span>
-                      <span className=" font-extralight">
-                        x {item.quantity}
-                      </span>
+                      <span className="font-extralight">x {item.quantity}</span>
                     </div>
 
                     <div>
@@ -130,7 +267,7 @@ const Cart = () => {
                         <p className={"font-light"}>
                           {item.selectedSize.startsWith("SIZE_")
                             ? item.selectedSize.split("_")[1]
-                            : item.selectedSize}
+                            : item.selectedSize.toUpperCase()}
                         </p>
                       </span>
                     </div>
@@ -181,14 +318,8 @@ const Cart = () => {
           <p className="font-bold">{totalPrice} kr</p>
         </div>
       </div>
-    );
-  } else {
-    return (
-      <div>
-        <p>Missing product information</p>
-      </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default Cart;
