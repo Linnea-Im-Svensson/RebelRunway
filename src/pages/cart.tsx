@@ -24,6 +24,12 @@ const Cart = () => {
   const [cardCode, setCardCode] = useState("");
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
+  const [input1, setInput1] = useState("");
+  const [input2, setInput2] = useState("");
+  const [input3, setInput3] = useState("");
+  const [input4, setInput4] = useState("");
+  const [input5, setInput5] = useState("");
+  const [input6, setInput6] = useState("");
 
   interface CartItem {
     productId: string;
@@ -32,12 +38,6 @@ const Cart = () => {
     productImage: string;
     price: number;
     quantity: number;
-  }
-
-  const [input, setInput] = useState("");
-
-  function handleChange(e: any) {
-    setInput(e.target.value);
   }
 
   useEffect(() => {
@@ -155,7 +155,8 @@ const Cart = () => {
               <input
                 className="mb-5 flex flex-col  bg-slate-200 dark:bg-neutral-700"
                 type="text"
-                onChange={handleChange}
+                value={input1}
+                onChange={(e) => setInput1(e.target.value)}
               />
             </label>
             <label className=" font-poppins md:mr-10">
@@ -163,7 +164,8 @@ const Cart = () => {
               <input
                 className="flex flex-col  bg-slate-200 dark:bg-neutral-700"
                 type="text"
-                onChange={handleChange}
+                value={input2}
+                onChange={(e) => setInput2(e.target.value)}
               />
             </label>
             <label className="font-poppins">
@@ -171,7 +173,8 @@ const Cart = () => {
               <input
                 className="mb-10 flex flex-col bg-slate-200 dark:bg-neutral-700 "
                 type="text"
-                onChange={handleChange}
+                value={input3}
+                onChange={(e) => setInput3(e.target.value)}
               />
             </label>
           </form>
@@ -181,7 +184,8 @@ const Cart = () => {
               <input
                 className="mb-5 flex flex-col bg-slate-200 dark:bg-neutral-700 "
                 type="text"
-                onChange={handleChange}
+                value={input4}
+                onChange={(e) => setInput4(e.target.value)}
               />
             </label>
 
@@ -190,7 +194,8 @@ const Cart = () => {
               <input
                 className="mb-10 flex flex-col bg-slate-200 dark:bg-neutral-700 md:mr-10"
                 type="text"
-                onChange={handleChange}
+                value={input5}
+                onChange={(e) => setInput5(e.target.value)}
               />
             </label>
             <label className="font-poppins">
@@ -198,7 +203,8 @@ const Cart = () => {
               <input
                 className=" flex flex-col bg-slate-200 dark:bg-neutral-700 "
                 type="text"
-                onChange={handleChange}
+                value={input6}
+                onChange={(e) => setInput6(e.target.value)}
               />
             </label>
           </form>
@@ -405,6 +411,7 @@ const Cart = () => {
                               {item.productName}
                             </span>
                             <span className="font-extralight">
+                              {" "}
                               x {item.quantity}
                             </span>
                           </div>
@@ -475,8 +482,6 @@ const Cart = () => {
               </div>
             </div>
           </div>
-
-          {/*  EMMAS??? */}
         </div>
       </div>
     </div>
