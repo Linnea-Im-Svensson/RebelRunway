@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import cardtype from "public/cardtypes.png";
 
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { AiOutlineLock } from "react-icons/ai";
+/* import { AiOutlineLock } from "react-icons/ai"; */
 
 const Cart = () => {
   const router = useRouter();
