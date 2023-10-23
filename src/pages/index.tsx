@@ -11,8 +11,6 @@ import manBuyingShoes from "../../public/bgImages/man-shoes.png";
 import Banner from "~/components/banner/Banner";
 
 export default function Home() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <SectionContainer

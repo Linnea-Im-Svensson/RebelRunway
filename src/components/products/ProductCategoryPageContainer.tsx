@@ -16,7 +16,7 @@ const ProductCategoryPageContainer = ({
     <div>
       <ProductHeader title={title} />
       <div className="my-4">
-        {products && <ProductGridBox products={products} />}
+        {products && <ProductGridBox products={products} selectedSize={null} />}
       </div>
     </div>
   );

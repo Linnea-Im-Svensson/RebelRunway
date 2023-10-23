@@ -4,10 +4,13 @@ import { Product, Category, Size, ShoeSize } from "@prisma/client";
 interface DropdownProps {
   products: Product[];
   productCategory: Category;
-  onSizeChange: (size: Size) => void;
+  onSizeChange: (size: Size | ShoeSize) => void;
 }
 
-export default function Dropdown({ productCategory }: DropdownProps) {
+export default function Dropdown({
+  productCategory,
+  onSizeChange,
+}: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSize, setSelectedSize] = useState<Size | ShoeSize | null>(
     null,
@@ -20,6 +23,7 @@ export default function Dropdown({ productCategory }: DropdownProps) {
   const handleItemClick = (size: Size | ShoeSize) => {
     setSelectedSize(size);
     setIsOpen(false);
+    onSizeChange(size);
   };
 
   const allSizes: Array<Size | ShoeSize> =
@@ -37,7 +41,7 @@ export default function Dropdown({ productCategory }: DropdownProps) {
           {selectedSize
             ? productCategory === "shoes"
               ? selectedSize.split("_")[1]
-              : selectedSize
+              : selectedSize.toUpperCase()
             : "Choose a size"}
         </span>
         <span className={`transform ${isOpen ? "rotate-180" : "rotate-0"}`}>
@@ -52,7 +56,7 @@ export default function Dropdown({ productCategory }: DropdownProps) {
               className="cursor-pointer border border-gray-100 px-4 py-2 hover:rounded-md hover:bg-gray-100"
               onClick={() => handleItemClick(size)}
             >
-              {size.split("_")[1] ? size.split("_")[1] : size}
+              {size.split("_")[1] ? size.split("_")[1] : size.toUpperCase()}
             </div>
           ))}
         </div>
