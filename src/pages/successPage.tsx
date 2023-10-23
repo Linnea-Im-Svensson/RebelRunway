@@ -2,7 +2,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 
 function SuccessPage() {
   return (
-    <div className="border-natural-500 mt-10 flex flex-col items-center justify-center rounded-sm  pl-8 pr-8 pt-10 shadow-lg dark:bg-white md:mb-10 md:w-fit md:px-20">
+    <div className="border-natural-500 mt-20 flex flex-col items-center justify-center rounded-sm pb-16 pl-8 pr-8 pt-10 shadow-xl dark:bg-white md:mb-10 md:mt-10 md:w-fit md:px-20">
       <div className=" mb-10 rounded-full bg-green-50 p-10 dark:bg-green-100  md:p-16 ">
         <AiOutlineCheck size={60} className="text-green-500" />
       </div>
