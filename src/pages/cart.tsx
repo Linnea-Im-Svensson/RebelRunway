@@ -22,6 +22,8 @@ const Cart = () => {
   const [cardName, setCardName] = useState("");
   const [cardDate, setCardDate] = useState("");
   const [cardCode, setCardCode] = useState("");
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
 
   interface CartItem {
     productId: string;
@@ -107,6 +109,17 @@ const Cart = () => {
     }
     return total;
   }
+
+  const handleCheckbox1Change = () => {
+    setIsChecked1(true);
+    setIsChecked2(false);
+  };
+
+  const handleCheckbox2Change = () => {
+    setIsChecked1(false);
+    setIsChecked2(true);
+  };
+
   const handleCheckbox3Change = () => {
     setIsChecked3(true);
     setIsChecked4(false);
@@ -125,7 +138,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="ml-2 flex flex-col">
+    <div className="ml-2 flex-col ">
       <h1 className="mt-10 font-poppins text-3xl font-bold text-neutral-700  dark:text-slate-100">
         Checkout
       </h1>
@@ -134,6 +147,7 @@ const Cart = () => {
       </p>
       <div className="md:flex">
         {/* FORMS */}
+
         <div className=" pt-10 md:mr-20">
           <form className="  md:flex">
             <label className="font-poppins dark:text-slate-100 md:mr-10">
@@ -191,174 +205,176 @@ const Cart = () => {
           <button className=" m-10 rounded-lg border bg-neutral-700 px-5 py-1 font-bold text-neutral-100 dark:bg-slate-100 dark:text-neutral-700">
             Continue to delevery
           </button>
-        </div>
-         {/* CHECKBOXES */}
+
+          {/* CHECKBOXES */}
+
           <div className="mb-10">
             <input type="checkbox" className="rounded-full" />
             <label className="ml-3 font-poppins text-neutral-700 dark:text-slate-100">
               Save my information for a faster checkout
             </label>
           </div>
-        </div>
-      </div>
-      <div>
-        <h1 className="mb-5 mt-10 font-poppins text-3xl font-bold  text-neutral-700 dark:text-slate-100">
-          Shipping Address
-        </h1>
-        <p className="font-poppins">
-          Select the address that matches your card or payment method
-        </p>
-        <ul className="mb-20 mt-10 ">
-          <li className="mb-3 bg-slate-100 p-6 dark:bg-neutral-700 ">
-            <input
-              type="checkbox"
-              onChange={handleCheckbox1Change}
-              checked={isChecked1}
-            />
+          <div>
+            <h1 className="mb-5 mt-10 font-poppins text-3xl font-bold  text-neutral-700 dark:text-slate-100">
+              Shipping Address
+            </h1>
+            <p className="font-poppins">
+              Select the address that matches your card or payment method
+            </p>
+            <ul className="mb-20 mt-10 ">
+              <li className="mb-3 bg-slate-100 p-6 dark:bg-neutral-700 ">
+                <input
+                  type="checkbox"
+                  onChange={handleCheckbox1Change}
+                  checked={isChecked1}
+                />
 
-            <label className="ml-2 font-poppins">Same as Billig address</label>
-          </li>
-          <li className=" bg-slate-100 p-6 dark:bg-neutral-700">
-            <input
-              type="checkbox"
-              onChange={handleCheckbox2Change}
-              checked={isChecked2}
-            />
-            <label className="ml-2">Use a different shipping address</label>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h1 className="mb-5 mt-10 font-poppins text-3xl font-bold   text-neutral-700 dark:text-slate-100">
-          Shipping Method
-        </h1>
-        <p className="border-b border-neutral-600 bg-slate-100 p-6 dark:bg-neutral-700">
-          Arrives by friday, October 31
-        </p>
-        <div className="mb-10 flex justify-between bg-slate-100 dark:bg-neutral-700">
-          <p className=" flex  p-6">Delivery Charges</p>
-          <p className="flex items-center pr-10">$15</p>
-        </div>
-      </div>
-    
-        <div>
-          <div className="flex flex-col gap-2 md:flex-row">
-            <div>
-              {/* Emmas */}
-              <div className="">
-                <h1 className="mb-5 mt-10 font-poppins text-3xl font-bold text-neutral-700 dark:text-slate-100">
-                  Payment method
-                </h1>
-                <p className="text-sm">
-                  All transactions are secure and encrypted.
+                <label className="ml-2 font-poppins">
+                  Same as Billig address
+                </label>
+              </li>
+              <li className=" bg-slate-100 p-6 dark:bg-neutral-700">
+                <input
+                  type="checkbox"
+                  onChange={handleCheckbox2Change}
+                  checked={isChecked2}
+                />
+                <label className="ml-2">Use a different shipping address</label>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h1 className="mb-5 mt-10 font-poppins text-3xl font-bold   text-neutral-700 dark:text-slate-100">
+              Shipping Method
+            </h1>
+            <p className="border-b border-neutral-600 bg-slate-100 p-6 dark:bg-neutral-700">
+              Arrives by friday, October 31
+            </p>
+            <div className="mb-10 flex justify-between bg-slate-100 dark:bg-neutral-700">
+              <p className=" flex  p-6">Delivery Charges</p>
+              <p className="flex items-center pr-10">$15</p>
+            </div>
+          </div>
+          <div>
+            {/* Emmas */}
+
+            <div className="">
+              <h1 className="mb-5 mt-10 font-poppins text-3xl font-bold text-neutral-700 dark:text-slate-100">
+                Payment method
+              </h1>
+              <p className="text-sm">
+                All transactions are secure and encrypted.
+              </p>
+            </div>
+            <div className="flex flex-col  bg-slate-100 p-4 font-poppins dark:text-slate-700 ">
+              <div className="border-b border-gray-200 p-2">
+                <div className="m-2 ">
+                  <label className="flex items-center space-x-1 font-semibold text-neutral-700 ">
+                    <input
+                      type="checkbox"
+                      checked={isChecked3}
+                      onChange={handleCheckbox3Change}
+                      className="mr-1"
+                    />
+                    Credit Card
+                  </label>
+                  <div className="flex flex-col gap-2 dark:text-slate-700">
+                    <p className="text-sm text-neutral-700">
+                      We accept all major credit cards.
+                    </p>
+                    <Image src={cardtype} alt={"cardtypes"} width={170} />
+                  </div>
+                </div>
+                <div className=" m-2 flex flex-col gap-2 md:flex-row">
+                  <div className="flex flex-col gap-2">
+                    <div className=" border border-gray-400">
+                      <input
+                        className="p-2"
+                        type="text"
+                        id="cardNumber"
+                        name="cardNumber"
+                        value={cardNumber}
+                        onChange={(e) => setCardNumber(e.target.value)}
+                        placeholder="Card number🔒"
+                        style={{ background: "transparent", width: "100%" }}
+                      />
+                    </div>
+                    <div className="border border-gray-400">
+                      <input
+                        className=" p-2"
+                        type="text"
+                        id="cardName"
+                        name="cardName"
+                        value={cardName}
+                        onChange={(e) => setCardName(e.target.value)}
+                        placeholder="Name of cardholder"
+                        style={{ background: "transparent", width: "100%" }}
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <div className="border border-gray-400">
+                      <input
+                        className="p-2"
+                        type="text"
+                        id="cardDate"
+                        name="cardDate"
+                        value={cardDate}
+                        onChange={(e) => setCardDate(e.target.value)}
+                        placeholder="Expiration date (MM/YY)"
+                        style={{ background: "transparent", width: "100%" }}
+                      />
+                    </div>
+                    <div className=" border border-gray-400">
+                      <input
+                        className="p-2"
+                        type="text"
+                        id="cardCode"
+                        name="cardCode"
+                        value={cardCode}
+                        onChange={(e) => setCardCode(e.target.value)}
+                        placeholder="Security code"
+                        style={{ background: "transparent", width: "100%" }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className=" mt-2 border-b border-gray-200 p-2">
+                <label className="flex items-center space-x-1 font-semibold text-neutral-700">
+                  <input
+                    type="checkbox"
+                    checked={isChecked4}
+                    onChange={handleCheckbox4Change}
+                    className="mr-1"
+                  />
+                  Cash on delivery
+                </label>
+                <p className="text-sm text-neutral-700">
+                  Pay with cash upon delivery.
                 </p>
               </div>
-              <div className="flex flex-col  bg-slate-100 p-4 font-poppins dark:text-slate-700 ">
-                <div className="border-b border-gray-200 p-2">
-                  <div className="m-2 ">
-                    <label className="flex items-center space-x-1 font-semibold text-neutral-700 ">
-                      <input
-                        type="checkbox"
-                        checked={isChecked3}
-                        onChange={handleCheckbox3Change}
-                        className="mr-1"
-                      />
-                      Credit Card
-                    </label>
-                    <div className="flex flex-col gap-2 dark:text-slate-700">
-                      <p className="text-sm text-neutral-700">
-                        We accept all major credit cards.
-                      </p>
-                      <Image src={cardtype} alt={"cardtypes"} width={170} />
-                    </div>
-                  </div>
-                  <div className=" m-2 flex flex-col gap-2 md:flex-row">
-                    <div className="flex flex-col gap-2">
-                      <div className=" border border-gray-400">
-                        <input
-                          className="p-2"
-                          type="text"
-                          id="cardNumber"
-                          name="cardNumber"
-                          value={cardNumber}
-                          onChange={(e) => setCardNumber(e.target.value)}
-                          placeholder="Card number🔒"
-                          style={{ background: "transparent", width: "100%" }}
-                        />
-                      </div>
-                      <div className="border border-gray-400">
-                        <input
-                          className=" p-2"
-                          type="text"
-                          id="cardName"
-                          name="cardName"
-                          value={cardName}
-                          onChange={(e) => setCardName(e.target.value)}
-                          placeholder="Name of cardholder"
-                          style={{ background: "transparent", width: "100%" }}
-                        />
-                      </div>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <div className="border border-gray-400">
-                        <input
-                          className="p-2"
-                          type="text"
-                          id="cardDate"
-                          name="cardDate"
-                          value={cardDate}
-                          onChange={(e) => setCardDate(e.target.value)}
-                          placeholder="Expiration date (MM/YY)"
-                          style={{ background: "transparent", width: "100%" }}
-                        />
-                      </div>
-                      <div className=" border border-gray-400">
-                        <input
-                          className="p-2"
-                          type="text"
-                          id="cardCode"
-                          name="cardCode"
-                          value={cardCode}
-                          onChange={(e) => setCardCode(e.target.value)}
-                          placeholder="Security code"
-                          style={{ background: "transparent", width: "100%" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className=" mt-2 border-b border-gray-200 p-2">
-                  <label className="flex items-center space-x-1 font-semibold text-neutral-700">
-                    <input
-                      type="checkbox"
-                      checked={isChecked4}
-                      onChange={handleCheckbox4Change}
-                      className="mr-1"
-                    />
-                    Cash on delivery
-                  </label>
-                  <p className="text-sm text-neutral-700">
-                    Pay with cash upon delivery.
-                  </p>
-                </div>
-                <div className="mt-2 p-2">
-                  <label className="flex items-center space-x-1 font-semibold text-neutral-700">
-                    <input
-                      type="checkbox"
-                      checked={isChecked5}
-                      onChange={handleCheckbox5Change}
-                      className="mr-1"
-                    />
-                    Paypal
-                  </label>
-                </div>
-              </div>
-              <div className="mt-4">
-                <button className="rounded-sm bg-black px-8 py-2 font-poppins text-white hover:bg-gray-600 dark:bg-slate-200 dark:font-semibold dark:text-black  dark:hover:bg-white">
-                  Pay Now
-                </button>
+              <div className="mt-2 p-2">
+                <label className="flex items-center space-x-1 font-semibold text-neutral-700">
+                  <input
+                    type="checkbox"
+                    checked={isChecked5}
+                    onChange={handleCheckbox5Change}
+                    className="mr-1"
+                  />
+                  Paypal
+                </label>
               </div>
             </div>
+            <div className="mt-4">
+              <button className="rounded-sm bg-black px-8 py-2 font-poppins text-white hover:bg-gray-600 dark:bg-slate-200 dark:font-semibold dark:text-black  dark:hover:bg-white">
+                Pay Now
+              </button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div className="flex flex-col gap-2 md:flex-row">
             <div className="flex flex-col border border-gray-200 p-2">
               <div>
                 <p className="p-2 text-center font-bold underline">
@@ -459,9 +475,12 @@ const Cart = () => {
               </div>
             </div>
           </div>
+
+          {/*  EMMAS??? */}
         </div>
-     </div>
-  
+      </div>
+    </div>
+  );
 };
 
 export default Cart;
