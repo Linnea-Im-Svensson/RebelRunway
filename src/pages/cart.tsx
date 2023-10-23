@@ -36,7 +36,7 @@ const Cart = () => {
 
   const [input, setInput] = useState("");
 
-  function handleChange(e) {
+  function handleChange(e: any) {
     setInput(e.target.value);
   }
 
