@@ -73,6 +73,7 @@ const ProductPreview = ({
         productName={name}
         productImage={productImage}
         productId={productId}
+        price={price}
       />
     </div>
   );
