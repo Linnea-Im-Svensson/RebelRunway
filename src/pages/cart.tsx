@@ -134,7 +134,6 @@ const Cart = () => {
       </p>
       <div className="md:flex">
         {/* FORMS */}
-
         <div className=" pt-10 md:mr-20">
           <form className="  md:flex">
             <label className="font-poppins dark:text-slate-100 md:mr-10">
@@ -193,7 +192,55 @@ const Cart = () => {
             Continue to delevery
           </button>
         </div>
+         {/* CHECKBOXES */}
+          <div className="mb-10">
+            <input type="checkbox" className="rounded-full" />
+            <label className="ml-3 font-poppins text-neutral-700 dark:text-slate-100">
+              Save my information for a faster checkout
+            </label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h1 className="mb-5 mt-10 font-poppins text-3xl font-bold  text-neutral-700 dark:text-slate-100">
+          Shipping Address
+        </h1>
+        <p className="font-poppins">
+          Select the address that matches your card or payment method
+        </p>
+        <ul className="mb-20 mt-10 ">
+          <li className="mb-3 bg-slate-100 p-6 dark:bg-neutral-700 ">
+            <input
+              type="checkbox"
+              onChange={handleCheckbox1Change}
+              checked={isChecked1}
+            />
 
+            <label className="ml-2 font-poppins">Same as Billig address</label>
+          </li>
+          <li className=" bg-slate-100 p-6 dark:bg-neutral-700">
+            <input
+              type="checkbox"
+              onChange={handleCheckbox2Change}
+              checked={isChecked2}
+            />
+            <label className="ml-2">Use a different shipping address</label>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h1 className="mb-5 mt-10 font-poppins text-3xl font-bold   text-neutral-700 dark:text-slate-100">
+          Shipping Method
+        </h1>
+        <p className="border-b border-neutral-600 bg-slate-100 p-6 dark:bg-neutral-700">
+          Arrives by friday, October 31
+        </p>
+        <div className="mb-10 flex justify-between bg-slate-100 dark:bg-neutral-700">
+          <p className=" flex  p-6">Delivery Charges</p>
+          <p className="flex items-center pr-10">$15</p>
+        </div>
+      </div>
+    
         <div>
           <div className="flex flex-col gap-2 md:flex-row">
             <div>
@@ -413,9 +460,8 @@ const Cart = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  );
+     </div>
+  
 };
 
 export default Cart;
