@@ -6,10 +6,8 @@ import {
   type NextAuthOptions,
 } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-
 import { env } from "~/env.mjs";
 import { db } from "~/server/db";
-
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
  * object and keep type safety.
@@ -24,13 +22,11 @@ declare module "next-auth" {
       // role: UserRole;
     };
   }
-
-   interface User {
+  // interface User {
   //   // ...other properties
   //   // role: UserRole;
   // }
 }
-
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
  *
@@ -63,7 +59,6 @@ export const authOptions: NextAuthOptions = {
      */
   ],
 };
-
 /**
  * Wrapper for `getServerSession` so that you don't need to import the `authOptions` in every file.
  *

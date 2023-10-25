@@ -23,12 +23,12 @@ const ProfilePage = () => {
       <UserInfo
         img={profilePic}
         alt="profilePic"
-        fullName="Joseph Gonzalez"
-        email="joseph.gonzalez@test.com"
-        streetName="3695 Rose Avenue"
-        postalCode={70001}
-        city="Metairie"
-        country="United States of America"
+        // fullName="Joseph Gonzalez"
+        // email="joseph.gonzalez@test.com"
+        // streetName="3695 Rose Avenue"
+        // postalCode={70001}
+        // city="Metairie"
+        // country="United States of America"
       />
       <h1 className="mt-8 text-3xl font-bold">My Orders</h1>
       <Order
