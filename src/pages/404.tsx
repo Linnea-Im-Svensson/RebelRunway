@@ -1,7 +1,6 @@
 import React from "react";
 
 const notFoundPage = () => {
-  // Style this page later
   return (
     <div className="mt-5 flex flex-col items-center rounded-lg dark:bg-white">
       <img src="404.png" alt="404" className="rounded-lg" />
