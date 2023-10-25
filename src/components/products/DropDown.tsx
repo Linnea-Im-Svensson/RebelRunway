@@ -41,7 +41,7 @@ export default function Dropdown({
           {selectedSize
             ? productCategory === "shoes"
               ? selectedSize.split("_")[1]
-              : selectedSize
+              : selectedSize.toUpperCase()
             : "Choose a size"}
         </span>
         <span className={`transform ${isOpen ? "rotate-180" : "rotate-0"}`}>
@@ -56,7 +56,7 @@ export default function Dropdown({
               className="cursor-pointer border border-gray-100 px-4 py-2 hover:rounded-md hover:bg-gray-100"
               onClick={() => handleItemClick(size)}
             >
-              {size.split("_")[1] ? size.split("_")[1] : size}
+              {size.split("_")[1] ? size.split("_")[1] : size.toUpperCase()}
             </div>
           ))}
         </div>

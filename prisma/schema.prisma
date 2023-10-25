@@ -2,7 +2,9 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+
+    provider = "prisma-client-js"
+    previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -51,15 +53,17 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  cart          Cart?
-  address       Address?
+
+    id            String    @id @default(cuid())
+    name          String?
+    email         String?   @unique
+    emailVerified DateTime?
+    image         String?
+    accounts      Account[]
+    sessions      Session[]
+    cart          Cart?
+    address       Address?
+    favorites     Favorite[]
 }
 
 model VerificationToken {
@@ -81,17 +85,30 @@ model Address {
 }
 
 model Product {
-  id          String      @id @default(cuid())
-  name        String
-  category    Category
-  subCategory SubCategory
-  price       Int
-  image       String
-  size        Size?
-  shoeSize    ShoeSize?
-  tags        Tag[]
-  color       String
-  cart        Cart[] //many to many relation
+
+    id          String      @id @default(cuid())
+    name        String
+    category    Category
+    subCategory SubCategory
+    price       Int
+    image       String
+    size        Size?
+    shoeSize    ShoeSize?
+    tags        Tag[]
+    color       String
+    cart        Cart[] //many to many relation
+    favoritedByUsers   Favorite[]
+
+    @@index([name])
+}
+
+model Favorite {
+    id          String      @id @default(cuid())
+    favoritedBy User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId      String
+    product     Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+    productId   String
+
 }
 
 model Tag {

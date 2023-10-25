@@ -58,6 +58,9 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
+  pages: {
+    signIn: "/signIn",
+  },
 };
 /**
  * Wrapper for `getServerSession` so that you don't need to import the `authOptions` in every file.
