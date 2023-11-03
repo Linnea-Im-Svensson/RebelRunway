@@ -100,15 +100,14 @@ const UserInfo = ({ img, alt }: userProps) => {
   };
 
   return (
-    <section className="mt-2 w-[90vw] md:w-[50vw]">
+    <section className="mt-2 w-[90vw] md:w-[60vw]">
       <div className="mt-4 rounded-md bg-[#ebeef2] p-10 dark:text-black">
         <div className="flex flex-col justify-evenly md:flex-row">
           <div>
             <ImageUpload />
-            {/* <Image className="rounded" src={img} alt={alt} height={200} /> */}
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 md:ml-6">
             <div>
               <label className="font-semibold ">Name: </label>
               <span>{sessionData?.user ? sessionData.user.name : "Login"}</span>

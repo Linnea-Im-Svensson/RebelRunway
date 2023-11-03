@@ -47,27 +47,26 @@ const ImageUpload: NextPage<Props> = () => {
     setUploading(false);
   };
   return (
-    <div className="flex flex-col items-center space-y-6 md:px-20">
-      <div className="pb-5">
+    <div className="md:w-4xl flex flex-col items-start space-y-6 pb-6 md:items-center">
+      <div>
         {getImage === "" ? (
           <div>Loading...</div>
         ) : (
           <img
             src={`data:image/png;base64,${getImage}`}
             alt="Your Image"
-            height="700px"
-            style={{ maxHeight: "150px" }}
+            style={{ height: "150px" }}
           />
         )}
       </div>
       <button
         onClick={() => setShowForm(true)}
-        className="bg-primary mt-6 cursor-pointer rounded-md px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:px-4 md:py-3"
+        className="bg-primary mt-6 cursor-pointer rounded-md px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:min-w-fit md:px-4 md:py-3"
       >
         Update image
       </button>
       {showForm && (
-        <div>
+        <div className="flex flex-col md:items-center">
           <label>
             <input
               type="file"
@@ -81,8 +80,8 @@ const ImageUpload: NextPage<Props> = () => {
               }}
             />
             <div
-              className="flex aspect-video h-40 w-40 cursor-pointer items-center
-        justify-center border-2 border-dashed border-slate-300 text-center"
+              className="flex aspect-video h-40 w-40 cursor-pointer items-center justify-center
+        border-2 border-dashed border-slate-300 text-center"
             >
               {selectedImage ? (
                 <img

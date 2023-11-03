@@ -20,7 +20,7 @@ const Wishlist = ({
   productName,
 }: wishlistProps) => {
   return (
-    <section className="mt-14 w-[90vw] md:w-[50vw]">
+    <section className="mt-14 w-[90vw] md:w-[60vw]">
       <div className="relative mt-4 flex items-end justify-between border-b-2 border-neutral-200 pb-6 md:flex-row md:items-center md:justify-between">
         <div className="flex">
           <div className="pr-4">
