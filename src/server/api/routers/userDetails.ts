@@ -3,6 +3,7 @@ import { z } from "zod";
 import {
   createTRPCRouter,
   protectedProcedure,
+  publicProcedure,
   // publicProcedure,
 } from "~/server/api/trpc";
 
@@ -14,7 +15,6 @@ export const userDetailsRouter = createTRPCRouter({
       },
     });
   }),
-
   create: protectedProcedure
     .input(
       z.object({

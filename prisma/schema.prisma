@@ -53,15 +53,15 @@ model Session {
 }
 
 model User {
-
     id            String    @id @default(cuid())
     name          String?
     email         String?   @unique
     emailVerified DateTime?
+    password      String?
     image         String?
     accounts      Account[]
     sessions      Session[]
-    cart          Cart?
+    cart          ProductInCart[]
     address       Address?
     favorites     Favorite[]
 }
@@ -85,7 +85,6 @@ model Address {
 }
 
 model Product {
-
     id          String      @id @default(cuid())
     name        String
     category    Category
@@ -96,10 +95,18 @@ model Product {
     shoeSize    ShoeSize?
     tags        Tag[]
     color       String
-    cart        Cart[] //many to many relation
+    inUserCart        ProductInCart[] 
     favoritedByUsers   Favorite[]
 
     @@index([name])
+}
+
+model ProductInCart {
+  id          String      @id @default(cuid())
+  product     Product     @relation(fields: [productId],references: [id], onDelete: Cascade)
+  productId   String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
 }
 
 model Favorite {
@@ -159,9 +166,9 @@ enum SubCategory {
   tops
 }
 
-model Cart {
-  id      String    @id @default(cuid())
-  product Product[] //many-to-many relation
-  user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId  String    @unique
-}
+// model Cart {
+//   id      String    @id @default(cuid())
+//   product Product[] //many-to-many relation
+//   user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   userId  String    @unique
+// }
