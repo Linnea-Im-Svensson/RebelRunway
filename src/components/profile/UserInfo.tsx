@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
+import ImageUpload from "./ImageUpload";
 
 type userProps = {
   img: StaticImageData | string;
@@ -103,7 +104,8 @@ const UserInfo = ({ img, alt }: userProps) => {
       <div className="mt-4 rounded-md bg-[#ebeef2] p-10 dark:text-black">
         <div className="flex flex-col justify-evenly md:flex-row">
           <div>
-            <Image className="rounded" src={img} alt={alt} height={200} />
+            <ImageUpload />
+            {/* <Image className="rounded" src={img} alt={alt} height={200} /> */}
           </div>
 
           <div className="flex flex-col gap-2">
@@ -196,7 +198,7 @@ const UserInfo = ({ img, alt }: userProps) => {
                         </div>
                         <button
                           onClick={() => editAddress(address)}
-                          className="mt-6 cursor-pointer rounded-md bg-primary px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:px-4 md:py-3"
+                          className="bg-primary mt-6 cursor-pointer rounded-md px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:px-4 md:py-3"
                         >
                           Update Your Address
                         </button>
@@ -250,7 +252,7 @@ const UserInfo = ({ img, alt }: userProps) => {
                 </div>
                 <button
                   onClick={handleAddOrUpdateAddress}
-                  className="mt-6 cursor-pointer rounded-md bg-primary px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:px-4 md:py-3"
+                  className="bg-primary mt-6 cursor-pointer rounded-md px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:px-4 md:py-3"
                 >
                   {isEditing ? "Save Address" : "Add Your Address"}
                 </button>
@@ -267,7 +269,7 @@ const UserInfo = ({ img, alt }: userProps) => {
                 Your address has been {isEditing ? "updated" : "added"}
               </div>
               <button
-                className="w-1/2 rounded-md bg-primary py-2 text-white hover:bg-cyan-300"
+                className="bg-primary w-1/2 rounded-md py-2 text-white hover:bg-cyan-300"
                 onClick={() => closeModal()}
               >
                 Close
@@ -290,12 +292,12 @@ const UserInfo = ({ img, alt }: userProps) => {
                     e.preventDefault();
                     signIn();
                   }}
-                  className="rounded-md bg-primary px-6 py-2 font-semibold hover:bg-cyan-300 dark:border-neutral-800 dark:text-white"
+                  className="bg-primary rounded-md px-6 py-2 font-semibold hover:bg-cyan-300 dark:border-neutral-800 dark:text-white"
                 >
                   Log in
                 </a>
                 <button
-                  className="w-1/2 rounded-md bg-primary py-2 text-white hover:bg-cyan-300"
+                  className="bg-primary w-1/2 rounded-md py-2 text-white hover:bg-cyan-300"
                   onClick={() => closeLoginModal()}
                 >
                   Go to homepage
