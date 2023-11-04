@@ -2,11 +2,13 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import SignIn from "~/components/signIn/SignIn";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Register from "~/components/signIn/Register";
 
 const signInPage = () => {
   const { data: sessionData } = useSession();
   const router = useRouter();
+  const [notRegistered, setNotRegistered] = useState(false);
 
   sessionData?.user && router.push("/profile");
 
@@ -21,9 +23,32 @@ const signInPage = () => {
           className="h-auto w-full rounded-xl"
         />
       </div>
-      <div className="w-96">
-        <SignIn />
-      </div>
+      <div className="w-96">{!notRegistered ? <SignIn /> : <Register />}</div>
+      {!notRegistered ? (
+        <p>
+          Not registered?{" "}
+          <span>
+            <button
+              onClick={() => setNotRegistered(true)}
+              className="mb-6 text-primary"
+            >
+              Register here
+            </button>
+          </span>
+        </p>
+      ) : (
+        <p>
+          Already a member?{" "}
+          <span>
+            <button
+              onClick={() => setNotRegistered(false)}
+              className="mb-6 text-primary"
+            >
+              Login
+            </button>
+          </span>
+        </p>
+      )}
     </div>
   ) : (
     <></>
