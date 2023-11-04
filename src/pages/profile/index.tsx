@@ -58,7 +58,7 @@ const ProfilePage = () => {
         qty={1}
         total={120}
       />
-      <div className="mb-32 mt-8 border-b-2 border-neutral-200"></div>
+      {/* <div className="mb-32 mt-8 border-b-2 border-neutral-200"></div>
       <h1 className="text-3xl font-bold">Wishlist</h1>
       <Wishlist
         img={pinkPants}
@@ -75,7 +75,11 @@ const ProfilePage = () => {
         qty={1}
         total={70}
         productName="Pink Pants"
-      />
+      /> */}
+      <div className="mb-32 mt-8 border-b-2 border-neutral-200">
+        <h1 className="text-3xl font-bold">Wishlist</h1>
+        <Wishlist />
+      </div>
     </main>
   );
 };
