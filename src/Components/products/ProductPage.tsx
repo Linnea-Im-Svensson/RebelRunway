@@ -1,15 +1,14 @@
 import React from "react";
-import { useRouter } from "next/router";
 
 const ProductPage: React.FC = () => {
   return (
     <div className="min-h-screen p-8">
-      <div className="max-w-screen-xl mx-auto p-6 flex flex-col md:flex-row">
+      <div className="max-w-screen-xl mx-auto p-6  flex flex-col md:flex-row">
         <div className="md:w-1/2 p-4">
           {/* Left column for product images */}
           <div className="rounded-lg w-full h-100 overflow-hidden">
             <img
-              src="gray-suit.jpg" // Image source
+              src="gray-suit.jpg"
               alt="Product"
               className="object-cover w-full h-full"
             />
@@ -18,9 +17,7 @@ const ProductPage: React.FC = () => {
         <div className="md:w-1/2 p-4">
           {/* Right column for product details */}
           <h1 className="text-2xl font-semibold">Product Name</h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Product description goes here.
-          </p>
+          <p className="text-gray-600 dark:text-gray-400">Product description goes here.</p>
           <p className="text-2xl font-semibold mt-4">799 kr</p>
 
           {/* Additional Information with Gray Background */}
@@ -63,9 +60,4 @@ const ProductPage: React.FC = () => {
   );
 };
 
-const productPage = () => {
-  const router = useRouter();
-  return <div>{router.query.productId}</div>;
-};
-
-export default productPage;
+export default ProductPage;
