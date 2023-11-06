@@ -15,11 +15,19 @@ interface ProductPreviewProps {
   productImage: string;
 }
 
+<<<<<<< HEAD
+export default function ProductPreview({
+  product,
+  productId,
+  productImage,
+}: ProductPreviewProps) {
+=======
 const ProductPreview = ({
   product,
   productId,
   productImage,
 }: ProductPreviewProps) => {
+>>>>>>> bd206d3f65c1b68967684516d00546451af8e690
   const { color, image, name, price, id } = product;
   const [selectedSize, setSelectedSize] = useState<Size | ShoeSize | null>(
     null,
@@ -73,7 +81,10 @@ const ProductPreview = ({
         productName={name}
         productImage={productImage}
         productId={productId}
+<<<<<<< HEAD
+=======
         price={price}
+>>>>>>> bd206d3f65c1b68967684516d00546451af8e690
       />
     </div>
   );
