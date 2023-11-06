@@ -2,6 +2,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 import ProductCard from "~/components/products/ProductCard";
 import hoodies from "../../public/hoodie.jpg";
+import beigeHoodie from "../../public/beige-hoodie.jpg";
+import blueSneakers from "../../public/blue-sneakers.jpg";
 // import bgYellow from "../../public/bgImages/bg-yellow.jpg";
 import bgWomanHat from "../../public/bgImages/bg-woman-hat.png";
 import ProductContainer from "~/components/products/ProductContainer";
@@ -35,13 +37,13 @@ export default function Home() {
         />
         <ProductCard
           productName="Hoodies"
-          img={hoodies}
+          img={beigeHoodie}
           cta="Explore Now!"
           url="/"
         />
         <ProductCard
           productName="Hoodies"
-          img={hoodies}
+          img={blueSneakers}
           cta="Explore Now!"
           url="/"
         />
