@@ -1,6 +1,9 @@
 import { Product, Size, ShoeSize } from "@prisma/client";
 import Image from "next/image";
 import { PiCircleFill } from "react-icons/pi";
+
+import FavoriteBtn from "../utils/FavoriteBtn";
+
 import Dropdown from "./DropDown";
 import AddToCartButton from "./AddToCartButton";
 import React, { useState } from "react";
@@ -12,11 +15,19 @@ interface ProductPreviewProps {
   productImage: string;
 }
 
+<<<<<<< HEAD
 export default function ProductPreview({
   product,
   productId,
   productImage,
 }: ProductPreviewProps) {
+=======
+const ProductPreview = ({
+  product,
+  productId,
+  productImage,
+}: ProductPreviewProps) => {
+>>>>>>> bd206d3f65c1b68967684516d00546451af8e690
   const { color, image, name, price, id } = product;
   const [selectedSize, setSelectedSize] = useState<Size | ShoeSize | null>(
     null,
@@ -29,8 +40,11 @@ export default function ProductPreview({
   return (
     <div
       key={id}
-      className="flex flex-col items-center gap-1 md:m-2 md:items-start"
+      className="relative flex flex-col items-center gap-1 md:m-2 md:items-start"
     >
+      <div className="absolute left-3 top-3">
+        <FavoriteBtn productId={id} />
+      </div>
       <Image
         className="h-[360px] w-[270px] rounded-lg"
         src={image}
@@ -46,6 +60,7 @@ export default function ProductPreview({
             className="rounded-xl border border-gray-300 text-sm"
             color={color}
           />
+          <PiCircleFill className="rounded-xl bg-white text-sm" color={color} />
           <PiCircleFill
             className="rounded-xl border border-gray-300 text-sm"
             color={color}
@@ -66,7 +81,12 @@ export default function ProductPreview({
         productName={name}
         productImage={productImage}
         productId={productId}
+<<<<<<< HEAD
+=======
+        price={price}
+>>>>>>> bd206d3f65c1b68967684516d00546451af8e690
       />
     </div>
   );
-}
+};
+export default ProductPreview;

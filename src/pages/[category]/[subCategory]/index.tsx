@@ -12,9 +12,11 @@ const subCategoryPage = () => {
   // To get search params. ?id=
   // const searchParams = useSearchParams();
   // const search = searchParams.get("id");
-  const subProducts = api.product.getSubCategoryProducts.useQuery({
-    subCategory: subCategory,
-  }).data;
+  const subProducts =
+    subCategory &&
+    api.product.getSubCategoryProducts.useQuery({
+      subCategory: subCategory,
+    }).data;
 
   return subProducts ? (
     <ProductCategoryPageContainer products={subProducts} title={subCategory} />

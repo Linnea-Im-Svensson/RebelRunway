@@ -6,6 +6,7 @@ import { BsArrowReturnRight } from "react-icons/bs";
 import { BsArrowLeft } from "react-icons/bs";
 import Link from "next/link";
 import Logo from "./Logo";
+import SideBarCart from "./SideBarCart";
 
 type SidebarNavModalProps = {
   showSideModal: boolean;
@@ -41,7 +42,7 @@ const SidebarNavModal = ({
       ></div>
       {/* white background modal */}
       <div
-        className={`fixed bottom-0 flex h-screen w-screen translate-x-0 flex-col justify-between bg-neutral-100  dark:bg-neutral-700 dark:text-slate-100 sm:w-96 ${
+        className={`fixed bottom-0 z-10 flex h-screen w-screen translate-x-0 flex-col justify-between bg-neutral-100 dark:bg-neutral-800 dark:text-slate-100 sm:w-96 ${
           showSideModal
             ? position === "right"
               ? "right-0"
@@ -60,9 +61,7 @@ const SidebarNavModal = ({
           X
         </button>
         {/* Right side modal */}
-        {position === "right" && (
-          <p className="mt-2 text-center text-xl">Cart</p>
-        )}
+        {position === "right" && <SideBarCart />}
 
         {/* Left side modal */}
         <div>
@@ -80,14 +79,14 @@ const SidebarNavModal = ({
           <div>
             <Link
               href="/profile"
-              className=" bg-primary flex w-full items-center gap-4 border-b-2 border-teal-700 p-2 text-left text-xl dark:border-neutral-800 dark:bg-neutral-900"
+              className=" flex w-full items-center gap-4 border-b-2 border-teal-700 bg-primary p-2 text-left text-xl dark:border-neutral-800 dark:bg-neutral-900"
             >
               <FaRegUserCircle />
               Profile
             </Link>
             <button
               onClick={() => (sessionData?.user ? signOut() : signIn())}
-              className="bg-primary mt-auto flex w-full items-center  gap-4 p-2 text-left text-xl dark:border-neutral-800 dark:bg-neutral-900"
+              className="mt-auto flex w-full items-center gap-4  bg-primary p-2 text-left text-xl dark:border-neutral-800 dark:bg-neutral-900"
             >
               <BsArrowReturnRight />
               {sessionData?.user ? "Sign out" : "Sign in"}
