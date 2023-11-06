@@ -6,6 +6,8 @@ import hoodies from "../../public/hoodie.jpg";
 import bgWomanHat from "../../public/bgImages/bg-woman-hat.png";
 import ProductContainer from "~/components/products/ProductContainer";
 import SectionContainer from "~/components/sections/SectionContainer";
+import MiddleSection from "~/components/sections/MiddleSection";
+import manBuyingShoes from "../../public/bgImages/man-shoes.png";
 import Banner from "~/components/banner/Banner";
 
 export default function Home() {
@@ -24,7 +26,6 @@ export default function Home() {
         alt="Woman wearing a black hat"
       />
       <Banner />
-
       <ProductContainer title="New Arrivals">
         <ProductCard
           productName="Hoodies"
@@ -45,6 +46,18 @@ export default function Home() {
           url="/"
         />
       </ProductContainer>
+      <MiddleSection
+        heading={
+          <>
+            <span className="block">EXPLORE</span>
+            <span className="block">UNIQUE</span>
+            <span className="block">SHOES</span>
+          </>
+        }
+        alt="man buying shoes"
+        bgColor="bg-primary"
+        myImg={manBuyingShoes}
+      />
     </>
   );
 }
