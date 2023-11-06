@@ -7,20 +7,28 @@ import whiteSneakers from "../../../public/white-sneakers.jpg";
 import pinkPants from "../../../public/pink-pants.jpg";
 import Wishlist from "~/components/profile/Wishlist";
 import profilePic from "../../../public/joseph-gonzalez.jpg";
+import { useSession } from "next-auth/react";
+import AccessDenied from "../accessDenied";
 
-const profilePage = () => {
+const ProfilePage = () => {
+  const { data: sessionData } = useSession();
+
+  if (!sessionData) {
+    return <AccessDenied />;
+  }
+
   return (
     <main>
       <h1 className="mt-8 text-3xl font-bold">My Profile</h1>
       <UserInfo
         img={profilePic}
         alt="profilePic"
-        fullName="Joseph Gonzalez"
-        email="joseph.gonzalez@test.com"
-        street="3695 Rose Avenue"
-        postalCode={70001}
-        city="Metairie"
-        country="United States of America"
+        // fullName="Joseph Gonzalez"
+        // email="joseph.gonzalez@test.com"
+        // streetName="3695 Rose Avenue"
+        // postalCode={70001}
+        // city="Metairie"
+        // country="United States of America"
       />
       <h1 className="mt-8 text-3xl font-bold">My Orders</h1>
       <Order
@@ -50,7 +58,7 @@ const profilePage = () => {
         qty={1}
         total={120}
       />
-      <div className="mb-32 mt-8 border-b-2 border-neutral-200"></div>
+      {/* <div className="mb-32 mt-8 border-b-2 border-neutral-200"></div>
       <h1 className="text-3xl font-bold">Wishlist</h1>
       <Wishlist
         img={pinkPants}
@@ -67,9 +75,13 @@ const profilePage = () => {
         qty={1}
         total={70}
         productName="Pink Pants"
-      />
+      /> */}
+      <div className="mb-32 mt-8 border-b-2 border-neutral-200">
+        <h1 className="text-3xl font-bold">Wishlist</h1>
+        <Wishlist />
+      </div>
     </main>
   );
 };
 
-export default profilePage;
+export default ProfilePage;

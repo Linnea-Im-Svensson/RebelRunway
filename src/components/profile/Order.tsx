@@ -30,7 +30,7 @@ const Order = ({
   total,
 }: orderProps) => {
   return (
-    <section className="mt-2 w-[90vw] md:w-[50vw]">
+    <section className="mt-2 w-[90vw] md:w-[60vw]">
       <div className=" mt-4 rounded-md bg-[#ebeef2] p-10 dark:text-black">
         <h2 className="mb-2 text-left font-semibold">{orderNr}</h2>
         <div className="flex flex-col justify-start md:flex-row md:items-center md:justify-between">

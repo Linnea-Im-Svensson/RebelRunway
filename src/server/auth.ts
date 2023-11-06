@@ -6,10 +6,11 @@ import {
   type NextAuthOptions,
 } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-
+import CredentialsProvider from "next-auth/providers/credentials";
 import { env } from "~/env.mjs";
 import { db } from "~/server/db";
-
+import { PrismaClient } from "@prisma/client";
+import { encode, decode } from "next-auth/jwt";
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
  * object and keep type safety.
@@ -24,13 +25,11 @@ declare module "next-auth" {
       // role: UserRole;
     };
   }
-
   // interface User {
   //   // ...other properties
   //   // role: UserRole;
   // }
 }
-
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
  *
@@ -47,7 +46,46 @@ export const authOptions: NextAuthOptions = {
     }),
   },
   adapter: PrismaAdapter(db),
+  // session: {
+  //   strategy: "jwt",
+  // },
+  // jwt: { encode, decode },
   providers: [
+    CredentialsProvider({
+      // The name to display on the sign in form (e.g. "Sign in with...")
+      name: "Credentials",
+      type: "credentials",
+      // `credentials` is used to generate a form on the sign in page.
+      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
+      // e.g. domain, username, password, 2FA token, etc.
+      // You can pass any HTML attribute to the <input> tag through the object.
+      credentials: {
+        email: { label: "Email", type: "email", placeholder: "Username" },
+        password: {
+          label: "Password",
+          type: "password",
+          placeholder: "Password",
+        },
+      },
+      async authorize(credentials, req) {
+        if (!credentials?.email || !credentials.password) {
+          return null;
+        }
+        const prisma = new PrismaClient();
+        const user = await prisma.user.findFirst({
+          where: {
+            email: credentials.email,
+            password: credentials.password,
+          },
+        });
+
+        if (user) {
+          return user;
+        } else {
+          return null;
+        }
+      },
+    }),
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
@@ -66,7 +104,6 @@ export const authOptions: NextAuthOptions = {
     signIn: "/signIn",
   },
 };
-
 /**
  * Wrapper for `getServerSession` so that you don't need to import the `authOptions` in every file.
  *

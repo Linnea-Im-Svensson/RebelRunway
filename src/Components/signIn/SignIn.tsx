@@ -1,23 +1,62 @@
 import { signIn } from "next-auth/react";
 import Image from "next/image";
-import React from "react";
+import React, { FormEventHandler, useState } from "react";
 
 const SignIn = () => {
+  const [formInfo, setFormInfo] = useState({ email: "", password: "" });
+  const [missinEmail, setMissingEmail] = useState(false);
+  const [missinPassword, setMissingPassword] = useState(false);
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    if (formInfo.email !== "") {
+      setMissingEmail(false);
+    }
+    if (formInfo.password !== "") {
+      setMissingPassword(false);
+    }
+
+    if (formInfo.email === "") {
+      setMissingEmail(true);
+    } else if (formInfo.password === "") {
+      setMissingPassword(true);
+    } else {
+      console.log(formInfo);
+      signIn("credentials", {
+        email: formInfo.email,
+        password: formInfo.password,
+        callbackUrl: "/",
+      });
+    }
+  };
   return (
-    <div className="flex w-full flex-col gap-4 p-4">
-      <form className="flex flex-col">
-        <label htmlFor="username">Username:</label>
+    <div className="flex w-full flex-col gap-4">
+      <form className="flex flex-col" onSubmit={handleSubmit}>
+        <label htmlFor="email">Email:</label>
         <input
-          type="text"
-          id="username"
-          name="username"
+          type="email"
+          id="email"
+          name="email"
+          value={formInfo.email}
+          onChange={(e) => setFormInfo({ ...formInfo, email: e.target.value })}
           className="mb-2 rounded-md bg-neutral-200 p-2 outline-none dark:bg-neutral-700"
         />
-        <label htmlFor="username">Password:</label>
+        {missinEmail && (
+          <p className="-translate-y-2 text-red-400">Enter valid email</p>
+        )}
+        <label htmlFor="password">Password:</label>
         <input
           type="password"
+          id="password"
+          name="password"
+          value={formInfo.password}
+          onChange={(e) =>
+            setFormInfo({ ...formInfo, password: e.target.value })
+          }
           className="mb-4 rounded-md bg-neutral-200 p-2 outline-none dark:bg-neutral-700"
         />
+        {missinPassword && (
+          <p className="-translate-y-4 text-red-400">Enter valid password</p>
+        )}
         <button className="mb-2 rounded-lg bg-primary py-2 text-black">
           Login
         </button>

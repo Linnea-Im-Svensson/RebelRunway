@@ -2,53 +2,54 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
+
     provider = "prisma-client-js"
     previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
-    provider = "postgresql"
-    // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
-    // Further reading:
-    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  // NOTE: When using mysql or sqlserver, uncomment the @db.Text annotations in model Account below
+  // Further reading:
+  // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
+  // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
+  url      = env("DATABASE_URL")
 }
 
 model Example {
-    id        Int      @id @default(autoincrement())
-    name      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-    @@index([name])
+  @@index([name])
 }
 
 // Necessary for Next auth
 model Account {
-    id                String  @id @default(cuid())
-    userId            String
-    type              String
-    provider          String
-    providerAccountId String
-    refresh_token     String? // @db.Text
-    access_token      String? // @db.Text
-    expires_at        Int?
-    token_type        String?
-    scope             String?
-    id_token          String? // @db.Text
-    session_state     String?
-    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? // @db.Text
+  access_token      String? // @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? // @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    @@unique([provider, providerAccountId])
+  @@unique([provider, providerAccountId])
 }
 
 model Session {
-    id           String   @id @default(cuid())
-    sessionToken String   @unique
-    userId       String
-    expires      DateTime
-    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
@@ -56,19 +57,31 @@ model User {
     name          String?
     email         String?   @unique
     emailVerified DateTime?
+    password      String?
     image         String?
     accounts      Account[]
     sessions      Session[]
-    cart          Cart?
+    cart          ProductInCart[]
+    address       Address?
     favorites     Favorite[]
 }
 
 model VerificationToken {
-    identifier String
-    token      String   @unique
-    expires    DateTime
+  identifier String
+  token      String   @unique
+  expires    DateTime
 
-    @@unique([identifier, token])
+  @@unique([identifier, token])
+}
+
+model Address {
+  id           String  @id @default(cuid())
+  street       String?
+  postalNumber String?
+  city         String?
+  country      String?
+  userId       String  @unique
+  user         User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Product {
@@ -82,10 +95,18 @@ model Product {
     shoeSize    ShoeSize?
     tags        Tag[]
     color       String
-    cart        Cart[] //many to many relation
+    inUserCart        ProductInCart[] 
     favoritedByUsers   Favorite[]
 
     @@index([name])
+}
+
+model ProductInCart {
+  id          String      @id @default(cuid())
+  product     Product     @relation(fields: [productId],references: [id], onDelete: Cascade)
+  productId   String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
 }
 
 model Favorite {
@@ -94,59 +115,60 @@ model Favorite {
     userId      String
     product     Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
     productId   String
+
 }
 
 model Tag {
-    id        Int     @id @default(autoincrement())
-    name      String
-    product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-    productId String
+  id        Int     @id @default(autoincrement())
+  name      String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String
 }
 
 enum Size {
-    xs
-    s
-    m
-    l
-    xl
+  xs
+  s
+  m
+  l
+  xl
 }
 
 enum ShoeSize {
-    SIZE_36
-    SIZE_37
-    SIZE_38
-    SIZE_39
-    SIZE_40
-    SIZE_41
-    SIZE_42
-    SIZE_43
-    SIZE_44
-    SIZE_45
+  SIZE_36
+  SIZE_37
+  SIZE_38
+  SIZE_39
+  SIZE_40
+  SIZE_41
+  SIZE_42
+  SIZE_43
+  SIZE_44
+  SIZE_45
 }
 
 enum Category {
-    clothes
-    shoes
-    sport
+  clothes
+  shoes
+  sport
 }
 
 enum SubCategory {
-    dresses
-    shirts
-    skirts
-    pants
-    blouses
-    sneakers
-    flats
-    heels
-    boots
-    tights
-    tops
+  dresses
+  shirts
+  skirts
+  pants
+  blouses
+  sneakers
+  flats
+  heels
+  boots
+  tights
+  tops
 }
 
-model Cart {
-    id      String    @id @default(cuid())
-    product Product[] //many-to-many relation
-    user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId  String    @unique
-}
+// model Cart {
+//   id      String    @id @default(cuid())
+//   product Product[] //many-to-many relation
+//   user    User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   userId  String    @unique
+// }
