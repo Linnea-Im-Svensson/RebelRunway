@@ -1,5 +1,6 @@
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
+import Link from "next/link";
 
 type sectionProps = {
   heading: React.ReactNode;
@@ -32,10 +33,11 @@ const middleSection = ({ heading, myImg, alt, bgColor }: sectionProps) => {
         <p className="text-lg text-black dark:text-white md:mb-5 md:font-medium">
           Discover Your Sole Mate.
         </p>
-
-        <button className="mt-4 cursor-pointer rounded-md bg-black px-3 py-2 text-white md:px-4 md:py-3">
-          Explore Now
-        </button>
+        <Link href={"/shoes"}>
+          <button className="mt-4 cursor-pointer rounded-md bg-black px-3 py-2 text-white md:px-4 md:py-3">
+            Explore Now
+          </button>
+        </Link>
       </div>
     </section>
   );

@@ -26,7 +26,6 @@ export default function Home() {
         alt="Woman wearing a black hat"
       />
       <Banner />
-
       <ProductContainer title="New Arrivals">
         <ProductCard
           productName="Hoodies"
