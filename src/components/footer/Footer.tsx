@@ -38,10 +38,10 @@ export default function Footer() {
           </h1>
 
           <ul className="leading-10">
-            <li>About us</li>
-            <li>Contact us</li>
-            <li>Support</li>
-            <li>Instagram</li>
+          <li><a href="/about">About us</a></li>
+          <li><a href="/contact">Contact us</a></li>
+          <li><a href="/support">Support</a></li>
+          <li>Instagram</li>
           </ul>
         </div>
 
