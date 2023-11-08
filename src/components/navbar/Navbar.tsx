@@ -11,7 +11,7 @@ import SidebarNavModal from "./SidebarNavModal";
 import Logo from "./Logo";
 import ThemeToggleBtn from "../themes/ThemeToggleBtn";
 import Link from "next/link";
-import ProfileDropDown from "./ProfileDropDown";
+// import ProfileDropDown from "./ProfileDropDown";
 
 const Navbar = () => {
   const { data: sessionData } = useSession();
@@ -124,21 +124,22 @@ const Navbar = () => {
               <ThemeToggleBtn />
               <div className=" hidden items-center justify-center lg:flex">
                 {sessionData?.user.name ? (
-                  <ProfileDropDown
-                    title={sessionData.user.name}
-                    dropDownChildLinks={[
-                      {
-                        id: 1,
-                        titel: "Profile",
-                        href: "/profile",
-                      },
-                      {
-                        id: 2,
-                        titel: "Sign out",
-                        callBack: () => signOut(),
-                      },
-                    ]}
-                  />
+                  // <ProfileDropDown
+                  //   title={sessionData.user.name}
+                  //   dropDownChildLinks={[
+                  //     {
+                  //       id: 1,
+                  //       titel: "Profile",
+                  //       href: "/profile",
+                  //     },
+                  //     {
+                  //       id: 2,
+                  //       titel: "Sign out",
+                  //       callBack: () => signOut(),
+                  //     },
+                  //   ]}
+                  // />
+                  <div></div>
                 ) : (
                   <button onClick={() => signIn()}>Sign in</button>
                 )}

@@ -6,12 +6,12 @@ import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 import ImageUpload from "./ImageUpload";
 
-// type userProps = {
-//   img: StaticImageData | string;
-//   alt: string;
-// };
+type userProps = {
+  img: StaticImageData | string;
+  alt: string;
+};
 
-const UserInfo = () => {
+const UserInfo = ({ img, alt }: userProps) => {
   const [street, setStreet] = useState<string>("");
   const [postalNumber, setPostalNumber] = useState<string>("");
   const [cityName, setCityName] = useState<string>("");
