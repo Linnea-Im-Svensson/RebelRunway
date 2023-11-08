@@ -55,4 +55,19 @@ export const productRouter = createTRPCRouter({
         },
       });
     }),
+  getFilteredProducts: publicProcedure
+    .input(z.object({ minPrice: z.number(), maxPrice: z.number() }))
+    .query(({ ctx, input }) => {
+      return ctx.db.product.findMany({
+        where: {
+          price: {
+            gt: input.minPrice,
+            lt: input.maxPrice,
+          },
+        },
+        orderBy: {
+          price: "asc",
+        },
+      });
+    }),
 });
