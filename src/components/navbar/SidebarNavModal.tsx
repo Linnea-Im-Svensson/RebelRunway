@@ -97,7 +97,7 @@ const SidebarNavModal = ({
         <div
           className={`fixed bottom-0 ${
             showSideChildLinks ? "left-0" : "-left-[150%]"
-          } z-30 flex h-screen w-screen translate-x-0 flex-col justify-between bg-yellow-50 transition-all dark:bg-slate-800 dark:text-slate-100  sm:w-96`}
+          } z-30 flex h-screen w-screen translate-x-0 flex-col justify-between bg-neutral-100 transition-all dark:bg-neutral-800 dark:text-neutral-100  sm:w-96`}
         >
           <div className="flex justify-center p-2">
             {position === "left" && <Logo />}
@@ -127,14 +127,14 @@ const SidebarNavModal = ({
               <div>
                 <Link
                   href="/profile"
-                  className=" flex w-full items-center gap-4 border-b-2 border-yellow-300 bg-yellow-200 p-2 text-left text-xl dark:border-slate-800 dark:bg-slate-900"
+                  className=" flex w-full items-center gap-4 border-b-2 border-teal-700 bg-primary p-2 text-left text-xl dark:border-neutral-800 dark:bg-neutral-900"
                 >
                   <FaRegUserCircle />
                   Profile
                 </Link>
                 <button
                   onClick={() => (sessionData?.user ? signOut() : signIn())}
-                  className="mt-auto flex w-full items-center gap-4  bg-yellow-200 p-2 text-left text-xl dark:bg-slate-900"
+                  className="mt-auto flex w-full items-center gap-4  bg-primary p-2 text-left text-xl dark:bg-neutral-900"
                 >
                   <BsArrowReturnRight />
                   {sessionData?.user ? "Sign out" : "Sign in"}
