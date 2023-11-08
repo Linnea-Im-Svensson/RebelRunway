@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ReactNode } from "react";
 import { AiOutlineDown } from "react-icons/ai";
 import { CategoryLinkInfo } from "~/types/navbarTypes";
 

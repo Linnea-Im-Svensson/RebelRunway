@@ -10,7 +10,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { env } from "~/env.mjs";
 import { db } from "~/server/db";
 import { PrismaClient } from "@prisma/client";
-import { encode, decode } from "next-auth/jwt";
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
  * object and keep type safety.

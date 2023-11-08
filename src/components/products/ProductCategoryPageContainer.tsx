@@ -1,7 +1,6 @@
-import React from "react";
 import ProductHeader from "./ProductHeader";
 import ProductGridBox from "./ProductGridBox";
-import { Product } from "@prisma/client";
+import type { Product } from "@prisma/client";
 
 type ProductCategoryPageContainerProps = {
   products: Product[];

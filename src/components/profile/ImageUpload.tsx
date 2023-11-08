@@ -1,10 +1,9 @@
-import { NextPage } from "next";
 import { useState, useEffect } from "react";
 import { api } from "~/utils/api";
 
-interface Props {}
+// interface Props {}
 
-const ImageUpload: NextPage<Props> = () => {
+const ImageUpload = () => {
   const [uploading, setUploading] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedFile, setSelectedFile] = useState<File>();
@@ -18,14 +17,14 @@ const ImageUpload: NextPage<Props> = () => {
     if (getImageApi.data) {
       const getUser = getImageApi.data[getImageApi.data.length - 1];
       const image = getUser?.image;
-      setGetImage(image || "");
+      setGetImage(image ?? "");
     } else {
       console.log("Error");
     }
     console.log(selectedFile, selectedImage);
   }, [getImageApi.data]);
 
-  const handleUpload = async () => {
+  const handleUpload = () => {
     setUploading(true);
     try {
       console.log("SelectedFile", selectedFile);
@@ -61,7 +60,7 @@ const ImageUpload: NextPage<Props> = () => {
       </div>
       <button
         onClick={() => setShowForm(true)}
-        className="bg-primary mt-6 cursor-pointer rounded-md px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:min-w-fit md:px-4 md:py-3"
+        className="mt-6 cursor-pointer rounded-md bg-primary px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:min-w-fit md:px-4 md:py-3"
       >
         Update image
       </button>
@@ -102,7 +101,7 @@ const ImageUpload: NextPage<Props> = () => {
               onClick={() => handleUpload()}
               disabled={uploading || selectedFile == undefined}
               style={{ opacity: uploading ? ".5" : "1" }}
-              className="bg-primary mt-6 cursor-pointer rounded-md px-3 py-2 font-semibold text-white hover:bg-cyan-300 disabled:cursor-not-allowed disabled:bg-slate-300 md:px-4 md:py-3"
+              className="mt-6 cursor-pointer rounded-md bg-primary px-3 py-2 font-semibold text-white hover:bg-cyan-300 disabled:cursor-not-allowed disabled:bg-slate-300 md:px-4 md:py-3"
             >
               {uploading ? "Uploading" : "Upload"}
             </button>

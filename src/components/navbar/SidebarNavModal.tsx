@@ -1,4 +1,4 @@
-import { CategoryLinkInfo, LinkInfo } from "~/types/navbarTypes";
+import type { CategoryLinkInfo, LinkInfo } from "~/types/navbarTypes";
 import CategoryLink from "./CategoryLink";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -35,7 +35,7 @@ const SidebarNavModal = ({
         className={`${
           showSideModal ? "fixed" : "hidden"
         } left-0 top-0 h-screen w-screen bg-black bg-opacity-30`}
-        onClick={(e) => (
+        onClick={() => (
           setShowSideModal(false),
           setShowSideChildLinks && setShowSideChildLinks(false)
         )}
@@ -69,10 +69,9 @@ const SidebarNavModal = ({
             {position === "left" && <Logo />}
           </div>
           <ul className="flex flex-col">
-            {categoryLink &&
-              categoryLink.map((link) => (
-                <CategoryLink key={link.title} {...link} isSideNavbar={true} />
-              ))}
+            {categoryLink?.map((link) => (
+              <CategoryLink key={link.title} {...link} isSideNavbar={true} />
+            ))}
           </ul>
         </div>
         {position === "left" && (
@@ -116,14 +115,13 @@ const SidebarNavModal = ({
           {position === "left" && (
             <>
               <ul className=" mb-auto flex flex-col ">
-                {currentChildLinks &&
-                  currentChildLinks.map((link) => (
-                    <CategoryLink
-                      key={link.title}
-                      {...link}
-                      isSideNavbar={true}
-                    />
-                  ))}
+                {currentChildLinks?.map((link) => (
+                  <CategoryLink
+                    key={link.title}
+                    {...link}
+                    isSideNavbar={true}
+                  />
+                ))}
               </ul>
 
               <div>

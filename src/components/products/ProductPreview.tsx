@@ -1,4 +1,4 @@
-import { Product, Size, ShoeSize } from "@prisma/client";
+import type { Product, Size, ShoeSize } from "@prisma/client";
 import Image from "next/image";
 import { PiCircleFill } from "react-icons/pi";
 
@@ -6,7 +6,7 @@ import FavoriteBtn from "../utils/FavoriteBtn";
 
 import Dropdown from "./DropDown";
 import AddToCartButton from "./AddToCartButton";
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface ProductPreviewProps {
   product: Product;

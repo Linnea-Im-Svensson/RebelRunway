@@ -4,7 +4,7 @@ import { BiHeart } from "react-icons/bi";
 import { BiShoppingBag } from "react-icons/bi";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { CategoryLinkInfo, LinkInfo } from "../../types/navbarTypes";
+import type { CategoryLinkInfo, LinkInfo } from "../../types/navbarTypes";
 import CategoryLink from "./CategoryLink";
 import SearchBar from "./SearchBar";
 import SidebarNavModal from "./SidebarNavModal";
@@ -187,15 +187,14 @@ const Navbar = () => {
             onMouseEnter={() => setShowChildLinks(true)}
             onMouseLeave={() => setShowChildLinks(false)}
           >
-            {currentChildLinks !== null &&
-              currentChildLinks.map((child) => (
-                <CategoryLink
-                  key={child.title}
-                  {...child}
-                  setChildLinks={setCurrentChildLinks}
-                  setShowState={setShowChildLinks}
-                />
-              ))}
+            {currentChildLinks?.map((child) => (
+              <CategoryLink
+                key={child.title}
+                {...child}
+                setChildLinks={setCurrentChildLinks}
+                setShowState={setShowChildLinks}
+              />
+            ))}
           </div>
         )}
       </nav>

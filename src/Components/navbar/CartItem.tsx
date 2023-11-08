@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Loading from "../utils/Loading";
 import { api } from "~/utils/api";
-import { Product, ProductInCart } from "@prisma/client";
+import type { Product, ProductInCart } from "@prisma/client";
 
 type CartItemProps = {
   product: ProductInCart & { product: Product };
@@ -11,8 +11,8 @@ const CartItem = ({ product }: CartItemProps) => {
   const ctx = api.useContext();
 
   const { mutate, isLoading } = api.cart.removeProductInCart.useMutation({
-    onSuccess: () => {
-      ctx.cart.getProductsInCart.invalidate();
+    onSuccess: async () => {
+      await ctx.cart.getProductsInCart.invalidate();
     },
   });
 

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Size, ShoeSize } from "@prisma/client";
+import { useState } from "react";
+import type { Size, ShoeSize } from "@prisma/client";
 import { BiSolidShoppingBag } from "react-icons/bi";
 import { useRouter } from "next/router";
 import { updateCart } from "./UpdateCart";

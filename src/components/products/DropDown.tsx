@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Product, Category, Size, ShoeSize } from "@prisma/client";
+import { useState } from "react";
+import { type Product, Category, Size, ShoeSize } from "@prisma/client";
 
 interface DropdownProps {
   products: Product[];

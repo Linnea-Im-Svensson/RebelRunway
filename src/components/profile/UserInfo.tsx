@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import { useSession } from "next-auth/react";
 import { api } from "~/utils/api";
@@ -7,12 +6,12 @@ import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 import ImageUpload from "./ImageUpload";
 
-type userProps = {
-  img: StaticImageData | string;
-  alt: string;
-};
+// type userProps = {
+//   img: StaticImageData | string;
+//   alt: string;
+// };
 
-const UserInfo = ({ img, alt }: userProps) => {
+const UserInfo = () => {
   const [street, setStreet] = useState<string>("");
   const [postalNumber, setPostalNumber] = useState<string>("");
   const [cityName, setCityName] = useState<string>("");
@@ -127,7 +126,7 @@ const UserInfo = ({ img, alt }: userProps) => {
                     <label className="mt-4 font-semibold">Street: </label>
                     <input
                       placeholder="Enter street"
-                      className="w-full text-black"
+                      className="w-full text-black dark:text-neutral-200"
                       type="text"
                       value={street}
                       onChange={(e) => setStreet(e.target.value)}
@@ -137,7 +136,7 @@ const UserInfo = ({ img, alt }: userProps) => {
                     <label className="mt-4 font-semibold">Postal Code: </label>
                     <input
                       placeholder="Enter postal code"
-                      className="w-full text-black"
+                      className="w-full text-black dark:text-neutral-200"
                       type="text"
                       value={postalNumber}
                       onChange={(e) => setPostalNumber(e.target.value)}
@@ -147,7 +146,7 @@ const UserInfo = ({ img, alt }: userProps) => {
                     <label className="mt-4 font-semibold">City: </label>
                     <input
                       placeholder="Enter city"
-                      className="w-full text-black"
+                      className="w-full text-black dark:text-neutral-200"
                       type="text"
                       value={cityName}
                       onChange={(e) => setCityName(e.target.value)}
@@ -157,7 +156,7 @@ const UserInfo = ({ img, alt }: userProps) => {
                     <label className="mt-4 font-semibold">Country: </label>
                     <input
                       placeholder="Enter country"
-                      className="w-full text-black"
+                      className="w-full text-black dark:text-neutral-200"
                       type="text"
                       value={countryName}
                       onChange={(e) => setCountryName(e.target.value)}
@@ -197,7 +196,7 @@ const UserInfo = ({ img, alt }: userProps) => {
                         </div>
                         <button
                           onClick={() => editAddress(address)}
-                          className="bg-primary mt-6 cursor-pointer rounded-md px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:px-4 md:py-3"
+                          className="mt-6 cursor-pointer rounded-md bg-primary px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:px-4 md:py-3"
                         >
                           Update Your Address
                         </button>
@@ -251,7 +250,7 @@ const UserInfo = ({ img, alt }: userProps) => {
                 </div>
                 <button
                   onClick={handleAddOrUpdateAddress}
-                  className="bg-primary mt-6 cursor-pointer rounded-md px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:px-4 md:py-3"
+                  className="mt-6 cursor-pointer rounded-md bg-primary px-3 py-2 font-semibold text-white hover:bg-cyan-300 md:px-4 md:py-3"
                 >
                   {isEditing ? "Save Address" : "Add Your Address"}
                 </button>
@@ -268,7 +267,7 @@ const UserInfo = ({ img, alt }: userProps) => {
                 Your address has been {isEditing ? "updated" : "added"}
               </div>
               <button
-                className="bg-primary w-1/2 rounded-md py-2 text-white hover:bg-cyan-300"
+                className="w-1/2 rounded-md bg-primary py-2 text-white hover:bg-cyan-300"
                 onClick={() => closeModal()}
               >
                 Close
@@ -291,12 +290,12 @@ const UserInfo = ({ img, alt }: userProps) => {
                     e.preventDefault();
                     signIn();
                   }}
-                  className="bg-primary rounded-md px-6 py-2 font-semibold hover:bg-cyan-300 dark:border-neutral-800 dark:text-white"
+                  className="rounded-md bg-primary px-6 py-2 font-semibold hover:bg-cyan-300 dark:border-neutral-800 dark:text-white"
                 >
                   Log in
                 </a>
                 <button
-                  className="bg-primary w-1/2 rounded-md py-2 text-white hover:bg-cyan-300"
+                  className="w-1/2 rounded-md bg-primary py-2 text-white hover:bg-cyan-300"
                   onClick={() => closeLoginModal()}
                 >
                   Go to homepage

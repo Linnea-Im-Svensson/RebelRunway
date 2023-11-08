@@ -1,4 +1,4 @@
-import { Product, Size, ShoeSize } from "@prisma/client";
+import type { Product, Size, ShoeSize } from "@prisma/client";
 import ProductPreview from "./ProductPreview";
 
 type GridboxContainerProps = {
