@@ -34,7 +34,7 @@ const SideBarCart = () => {
       {productsInCart?.length === 0 || !sessionData ? (
         <div className="w-full">
           <p className="text-center">No products in cart</p>
-          <div className="mt-6 h-1 w-full bg-neutral-200"></div>
+          <div className="mt-6 h-1 w-full bg-neutral-700 dark:bg-neutral-200"></div>
           {/* add recommended products here later */}
         </div>
       ) : (

@@ -3,7 +3,6 @@ import SearchBarModal from "./SearchBarModal";
 import { useState } from "react";
 import { api } from "~/utils/api";
 import Link from "next/link";
-import Loading from "../utils/Loading";
 
 const SearchBar = () => {
   const [showSearchModal, setShowSearchModal] = useState<boolean>(false);
@@ -25,7 +24,7 @@ const SearchBar = () => {
             showSearchModal && input !== "" && data?.length
               ? "rounded-t-lg border-b-2 border-neutral-800"
               : "rounded-lg"
-          } bg-slate-200 p-2 outline-none dark:bg-neutral-700`}
+          } bg-neutral-200 p-2 outline-none dark:bg-neutral-700`}
           onFocus={() => setShowSearchModal(true)}
           //come up with a better solution for this later
           onBlur={() =>

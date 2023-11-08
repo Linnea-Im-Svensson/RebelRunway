@@ -28,7 +28,7 @@ const ThemeToggleBtn = () => {
 
   return (
     <div
-      className={`items-center" justify-start" flex h-8 w-14 rounded-2xl bg-slate-200 transition-all dark:bg-neutral-700 ${
+      className={`items-center" justify-start" flex h-8 w-14 rounded-2xl bg-neutral-200 transition-all dark:bg-neutral-700 ${
         currentTheme === "light" ? "pr-6" : "pl-6"
       }`}
     >
