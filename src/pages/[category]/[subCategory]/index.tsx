@@ -19,7 +19,11 @@ const subCategoryPage = () => {
     }).data;
 
   return subProducts ? (
-    <ProductCategoryPageContainer products={subProducts} title={subCategory} />
+    <ProductCategoryPageContainer
+      products={subProducts}
+      title={subCategory}
+      subCategory={subCategory}
+    />
   ) : (
     <div>...loading</div>
   );

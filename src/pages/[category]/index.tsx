@@ -15,7 +15,11 @@ const categoryPage = () => {
 
   return (
     products && (
-      <ProductCategoryPageContainer products={products} title={category} />
+      <ProductCategoryPageContainer
+        products={products}
+        title={category}
+        category={category}
+      />
     )
   );
 };

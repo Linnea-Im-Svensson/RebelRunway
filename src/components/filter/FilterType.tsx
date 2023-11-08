@@ -1,59 +1,58 @@
 import type { Product } from "@prisma/client";
-import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { api } from "~/utils/api";
+import FilterTypeCard from "./FilterTypeCard";
+import ColorOption from "./ColorOption";
+import { FilterOptions } from "./Filter";
 
-type FilterOptions = "price" | "color" | "brand" | "category";
+type FilterCategoryOptions = "price" | "color" | "brand" | "category";
 
 type FilterProps = {
   title: string;
-  type: FilterOptions;
-  setFilteredProducts: React.Dispatch<React.SetStateAction<Product[] | null>>;
+  type: FilterCategoryOptions;
+  setFilteredProducts: React.Dispatch<
+    React.SetStateAction<Product[] | undefined>
+  >;
+  setFilterOptions: React.Dispatch<React.SetStateAction<FilterOptions>>;
+  filterOptions: FilterOptions;
 };
 
-const FilterType = ({ title, type, setFilteredProducts }: FilterProps) => {
-  const [filterOptions, setFilterOptions] = useState(false);
+const FilterType = ({
+  title,
+  type,
+  setFilteredProducts,
+  setFilterOptions,
+  filterOptions,
+}: FilterProps) => {
+  const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [minRangeValue, setMinRangeValue] = useState(10);
   const [maxRangeValue, setMaxRangeValue] = useState(1000);
 
-  const filterByPrice = api.product.getFilteredProducts.useQuery(
-    {
-      minPrice: minRangeValue,
-      maxPrice: maxRangeValue,
-    },
-    {
-      refetchOnWindowFocus: false,
-      enabled: false,
-    },
-  );
-
-  const handlePriceFilter = () => {
-    console.log(minRangeValue, maxRangeValue);
-    filterByPrice
-      .refetch()
-      .then((data) => setFilteredProducts(data.data ?? []));
-    if (filterByPrice.isSuccess) {
-      setFilteredProducts(filterByPrice.data);
-    }
-  };
+  // const filterByPrice = api.product.getFilteredProducts.useQuery(
+  //   {
+  //     minPrice: minRangeValue,
+  //     maxPrice: maxRangeValue,
+  //   },
+  //   {
+  //     refetchOnWindowFocus: false,
+  //     enabled: false,
+  //   },
+  // );
 
   return (
     <div
-      onClick={() => setFilterOptions(!filterOptions)}
+      onClick={() => setShowFilterOptions(!showFilterOptions)}
       className="relative flex min-w-[80px] cursor-pointer items-center justify-between rounded-t-lg bg-neutral-100 p-2 text-neutral-700 hover:bg-neutral-200 dark:bg-neutral-700 dark:text-neutral-200"
     >
       <p>{title}</p>
-      {filterOptions ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
+      {showFilterOptions ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
 
-      {filterOptions && (
+      {showFilterOptions && (
         <>
           {type === "price" && (
-            <div
-              onClick={(e) => e.stopPropagation()}
-              className="absolute -bottom-[94px] left-0 z-10 h-[200] w-[300px] cursor-default rounded-b-lg rounded-r-lg bg-neutral-100 p-2 dark:bg-neutral-700 dark:text-neutral-200"
-            >
+            <FilterTypeCard>
               <div className="flex w-full items-center justify-between">
                 <div className="flex min-w-[80px] items-center justify-center bg-neutral-300 p-2 dark:bg-neutral-600">
                   {minRangeValue}:-
@@ -70,8 +69,78 @@ const FilterType = ({ title, type, setFilteredProducts }: FilterProps) => {
                 step={10}
                 value={minRangeValue}
                 onChange={(e) => setMinRangeValue(+e.target.value)}
-                onMouseUp={handlePriceFilter}
+                onMouseUp={() => (
+                  setFilterOptions({
+                    ...filterOptions,
+                    maxPrice: maxRangeValue,
+                    minPrice: minRangeValue,
+                  }),
+                  setShowFilterOptions(false)
+                )}
                 className="mt-4 w-full"
+              />
+            </FilterTypeCard>
+          )}
+          {type === "color" && (
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="absolute -bottom-[120px] left-0 z-10 grid h-[200] w-[300px] cursor-default grid-cols-2 gap-2 rounded-b-lg rounded-r-lg bg-neutral-100 p-2 dark:bg-neutral-700 dark:text-neutral-200"
+            >
+              <ColorOption
+                bgColor="bg-red-500"
+                color="red"
+                setFilterOptions={setFilterOptions}
+                filterOptions={filterOptions}
+                setShowFilterOptions={setShowFilterOptions}
+              />
+              <ColorOption
+                bgColor="bg-blue-500"
+                color="blue"
+                setFilterOptions={setFilterOptions}
+                filterOptions={filterOptions}
+                setShowFilterOptions={setShowFilterOptions}
+              />
+              <ColorOption
+                bgColor="bg-yellow-500"
+                color="yellow"
+                setFilterOptions={setFilterOptions}
+                filterOptions={filterOptions}
+                setShowFilterOptions={setShowFilterOptions}
+              />
+              <ColorOption
+                bgColor="bg-green-500"
+                color="green"
+                setFilterOptions={setFilterOptions}
+                filterOptions={filterOptions}
+                setShowFilterOptions={setShowFilterOptions}
+              />
+              <ColorOption
+                bgColor="bg-black"
+                color="black"
+                setFilterOptions={setFilterOptions}
+                filterOptions={filterOptions}
+                setShowFilterOptions={setShowFilterOptions}
+              />
+              <ColorOption
+                bgColor="bg-white"
+                color="white"
+                setFilterOptions={setFilterOptions}
+                filterOptions={filterOptions}
+                setShowFilterOptions={setShowFilterOptions}
+              />
+              <ColorOption
+                bgColor="bg-red-200"
+                color="pink"
+                setFilterOptions={setFilterOptions}
+                filterOptions={filterOptions}
+                setShowFilterOptions={setShowFilterOptions}
+              />
+              <ColorOption
+                bgColor="bg-neutral-500"
+                color="gray"
+                setFilterOptions={setFilterOptions}
+                filterOptions={filterOptions}
+                setShowFilterOptions={setShowFilterOptions}
               />
             </div>
           )}

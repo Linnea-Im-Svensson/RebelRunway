@@ -1,25 +1,37 @@
 import ProductHeader from "./ProductHeader";
 import ProductGridBox from "./ProductGridBox";
-import type { Product } from "@prisma/client";
+import { Category, Product, SubCategory } from "@prisma/client";
 import Filter from "../filter/Filter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type ProductCategoryPageContainerProps = {
   products: Product[];
   title: string;
+  category?: Category;
+  subCategory?: SubCategory;
 };
 
 const ProductCategoryPageContainer = ({
   products,
   title,
+  category,
+  subCategory,
 }: ProductCategoryPageContainerProps) => {
-  const [filteredProducts, setFilteredProducts] = useState<Product[] | null>(
-    null,
-  );
+  const [filteredProducts, setFilteredProducts] = useState<
+    Product[] | undefined
+  >(undefined);
+  // useEffect(() => {
+  //   setFilteredProducts(undefined);
+  // }, []);
+  // console.log(filteredProducts);
   return (
     <div>
       <ProductHeader title={title} />
-      <Filter setFilteredProducts={setFilteredProducts} />
+      <Filter
+        setFilteredProducts={setFilteredProducts}
+        category={category}
+        subCategory={subCategory}
+      />
       <div className="my-4">
         {filteredProducts && (
           <ProductGridBox products={filteredProducts} selectedSize={null} />
