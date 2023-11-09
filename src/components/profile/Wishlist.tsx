@@ -68,8 +68,8 @@ const Wishlist = () => {
                     // eslint-disable-next-line @typescript-eslint/no-misused-promises
                     onClick={() =>
                       goToCategory(
-                        favorite.product.category,
-                        favorite.product.subCategory,
+                        favorite.product.category ?? "",
+                        favorite.product.subCategory ?? "",
                       )
                     }
                     className="cursor-pointer rounded-md bg-black px-2 py-1 text-xs text-white md:px-3 md:py-2 md:text-sm"

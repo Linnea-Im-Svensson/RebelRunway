@@ -1,5 +1,5 @@
 // import { useSearchParams } from "next/navigation";
-import { SubCategory } from "@prisma/client";
+import type { SubCategory } from "@prisma/client";
 import { useRouter } from "next/router";
 import React from "react";
 import ProductCategoryPageContainer from "~/components/products/ProductCategoryPageContainer";
@@ -19,7 +19,11 @@ const subCategoryPage = () => {
     }).data;
 
   return subProducts ? (
-    <ProductCategoryPageContainer products={subProducts} title={subCategory} />
+    <ProductCategoryPageContainer
+      products={subProducts}
+      title={subCategory}
+      subCategory={subCategory}
+    />
   ) : (
     <div>...loading</div>
   );
