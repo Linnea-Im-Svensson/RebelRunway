@@ -1,4 +1,4 @@
-import type { Product, Size, ShoeSize } from "@prisma/client";
+import { Product, Size, ShoeSize } from "@prisma/client";
 import Image from "next/image";
 import { PiCircleFill } from "react-icons/pi";
 
@@ -65,7 +65,7 @@ const ProductPreview = ({
       </div>
       <Dropdown
         products={[product]}
-        productCategory={product.category}
+        productCategory={product.category!}
         onSizeChange={handleSizeChange}
       />
       <AddToCartButton
