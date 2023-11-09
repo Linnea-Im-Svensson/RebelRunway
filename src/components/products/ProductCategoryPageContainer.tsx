@@ -25,7 +25,7 @@ const ProductCategoryPageContainer = ({
   // }, []);
   // console.log(filteredProducts);
   return (
-    <div>
+    <div className="w-3/4">
       <ProductHeader title={title} />
       <Filter
         setFilteredProducts={setFilteredProducts}

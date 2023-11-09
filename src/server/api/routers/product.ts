@@ -90,6 +90,7 @@ export const productRouter = createTRPCRouter({
             },
             color: input.color,
             category: input.category,
+            subCategory: input.subCategory,
           },
         });
       }

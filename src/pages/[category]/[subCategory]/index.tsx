@@ -1,5 +1,5 @@
 // import { useSearchParams } from "next/navigation";
-import { SubCategory } from "@prisma/client";
+import type { SubCategory } from "@prisma/client";
 import { useRouter } from "next/router";
 import React from "react";
 import ProductCategoryPageContainer from "~/components/products/ProductCategoryPageContainer";

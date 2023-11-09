@@ -87,8 +87,8 @@ model Address {
 model Product {
     id          String      @id @default(cuid())
     name        String
-    category    Category
-    subCategory SubCategory
+    category    Category?
+    subCategory SubCategory?
     price       Int
     image       String
     size        Size?
