@@ -1,8 +1,6 @@
-import type { Product } from "@prisma/client";
 import { useState } from "react";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { api } from "~/utils/api";
 import FilterTypeCard from "./FilterTypeCard";
 import ColorOption from "./ColorOption";
 import { FilterOptions } from "./Filter";
@@ -12,9 +10,6 @@ type FilterCategoryOptions = "price" | "color" | "brand" | "category";
 type FilterProps = {
   title: string;
   type: FilterCategoryOptions;
-  setFilteredProducts: React.Dispatch<
-    React.SetStateAction<Product[] | undefined>
-  >;
   setFilterOptions: React.Dispatch<React.SetStateAction<FilterOptions>>;
   filterOptions: FilterOptions;
 };
@@ -22,24 +17,12 @@ type FilterProps = {
 const FilterType = ({
   title,
   type,
-  setFilteredProducts,
   setFilterOptions,
   filterOptions,
 }: FilterProps) => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [minRangeValue, setMinRangeValue] = useState(10);
   const [maxRangeValue, setMaxRangeValue] = useState(1000);
-
-  // const filterByPrice = api.product.getFilteredProducts.useQuery(
-  //   {
-  //     minPrice: minRangeValue,
-  //     maxPrice: maxRangeValue,
-  //   },
-  //   {
-  //     refetchOnWindowFocus: false,
-  //     enabled: false,
-  //   },
-  // );
 
   return (
     <div

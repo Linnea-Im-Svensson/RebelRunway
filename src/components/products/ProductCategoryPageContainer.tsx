@@ -2,7 +2,7 @@ import ProductHeader from "./ProductHeader";
 import ProductGridBox from "./ProductGridBox";
 import { Category, Product, SubCategory } from "@prisma/client";
 import Filter from "../filter/Filter";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type ProductCategoryPageContainerProps = {
   products: Product[];
@@ -20,10 +20,6 @@ const ProductCategoryPageContainer = ({
   const [filteredProducts, setFilteredProducts] = useState<
     Product[] | undefined
   >(undefined);
-  // useEffect(() => {
-  //   setFilteredProducts(undefined);
-  // }, []);
-  // console.log(filteredProducts);
   return (
     <div className="w-3/4">
       <ProductHeader title={title} />

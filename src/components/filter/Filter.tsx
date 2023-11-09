@@ -1,9 +1,7 @@
 import type { Category, Product, SubCategory } from "@prisma/client";
 import FilterType from "./FilterType";
-import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { api } from "~/utils/api";
-import Link from "next/link";
 
 type FilterProps = {
   setFilteredProducts: React.Dispatch<
@@ -26,12 +24,6 @@ const Filter = ({
   category,
   subCategory,
 }: FilterProps) => {
-  console.log("Category: " + category, "Sub: " + subCategory);
-  // let category: Category | undefined = Object.values(Category).includes(
-  //   pathname.split("/")[1] as Category,
-  // )
-  //   ? (pathname.split("/")[1] as Category)
-  //   : undefined;
   const [filterOptions, setFilterOptions] = useState<FilterOptions>({
     category: category,
     subCategory: subCategory,
@@ -39,7 +31,6 @@ const Filter = ({
     maxPrice: undefined,
     color: undefined,
   });
-  console.log("options: " + filterOptions);
 
   const filterByOptions = api.product.getFilteredProducts.useQuery(
     {
@@ -62,6 +53,7 @@ const Filter = ({
       .then((data) => setFilteredProducts(data.data ?? []));
   };
 
+  //trigger everytime category or subcategory changes
   useEffect(() => {
     setFilterOptions({
       category: category,
@@ -71,21 +63,21 @@ const Filter = ({
       maxPrice: undefined,
     });
   }, [subCategory, category]);
+
   //trigger everytime filteroptions changes
   useEffect(() => {
     handleFilter();
   }, [filterOptions]);
+
   return (
     <div className="flex w-full items-center justify-start gap-6 ">
       <FilterType
-        setFilteredProducts={setFilteredProducts}
         setFilterOptions={setFilterOptions}
         filterOptions={filterOptions}
         title="Color"
         type="color"
       />
       <FilterType
-        setFilteredProducts={setFilteredProducts}
         setFilterOptions={setFilterOptions}
         filterOptions={filterOptions}
         title="Price"
